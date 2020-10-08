@@ -3,4 +3,5 @@ class Store < ApplicationRecord
   validates :address, presence: true
   validates :line_name, presence: true
   validates :station, presence:  true
+  has_one :city
 end
