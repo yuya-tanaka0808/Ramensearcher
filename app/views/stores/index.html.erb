@@ -1,0 +1,33 @@
+<h1>Ramen searcher</h1>
+<p id="notice"><%= notice %></p>
+<table>
+  <thead>
+  <tr>
+    <th>name/</th>
+    <th>address/</th>
+    <th>contact/</th>
+    <th>line_name/</th>
+    <th>station/</th>
+    <th>open_closed/</th>
+    <th>regular_holiday/</th>
+    <th colspan="3"></th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @stores.each do |store| %>
+    <tr>
+      <td><%= store.name %></td>
+      <td><%= store.address %></td>
+      <td><%= store.contact %></td>
+      <td><%= store.line_name %></td>
+      <td><%= store.station %></td>
+      <td><%= store.open_closed %></td>
+      <td><%= store.regular_holiday %></td>
+      <td><%= link_to 'show', store_path(store.id) %></td>
+      <td><%= link_to 'edit', edit_store_path(store) %></td>
+      <td><%= link_to 'destroy', store, method: :delete, data: {confirm: 'deleted？'} %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+<%= link_to 'new_store', new_store_path %>
