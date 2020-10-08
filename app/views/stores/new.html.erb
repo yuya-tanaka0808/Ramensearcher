@@ -1,2 +1,7 @@
-<h1>Stores#new</h1>
-<p>Find me in app/views/stores/new.html.erb</p>
+<h1>Add Ramen store only admin</h1>
+
+<%= render 'form', store: @store %>
+
+<div>
+  <%= link_to 'back', stores_path %>
+</div>

@@ -1,0 +1,67 @@
+<%= form_with(model: store, local: true, url:stores_path) do |form| %>
+<% if store.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(store.errors.count, "error") %> prohibited this store from being saved:</h2>
+    <ul>
+      <% store.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+<table>
+  <br>
+  <tr>
+    <th class="name"><%= form.label :"name" %></th>
+    <td class="name"><%= form.text_field :name %></td>
+  </tr>
+  <tr>
+    <th class="address"><%= form.label :"address" %></th>
+    <td class="address"><%= form.text_field :address %></td>
+  </tr>
+  <tr>
+    <th class="contact"><%= form.label :"contact" %></th>
+    <td class="contact"><%= form.text_field :contact %></td>
+  </tr>
+  <tr>
+    <th class="line_name"><%= form.label :"line_name" %></th>
+    <td class="line_name"><%= form.text_field :line_name %></td>
+  </tr>
+  <tr>
+    <th class="station"><%= form.label :"station" %></th>
+    <td class="station"><%= form.text_field :station %></td>
+  </tr>
+  <tr>
+    <th class="minutes_on_foot"><%= form.label :"minutes_on_foot" %></th>
+    <td class="minutes_on_foot"><%= form.text_field :minutes_on_foot %></td>
+  </tr>
+  <tr>
+    <th class="link"><%= form.label :"link" %></th>
+    <td class="link"><%= form.text_field :link %></td>
+  </tr>
+  <tr>
+    <th class="open_closed"><%= form.label :"open_closed" %></th>
+    <td class="open_closed"><%= form.text_field :open_closed %></td>
+  </tr>
+  <tr>
+    <th class="regular_holiday"><%= form.label :"regular_holiday" %></th>
+    <td class="regular_holiday"><%= form.text_field :regular_holiday %></td>
+  </tr>
+  <tr>
+    <th class="note"><%= form.label :"note" %></th>
+    <td class="note"><%= form.text_field :note %></td>
+  </tr>
+  <tr>
+    <th class="latitude"><%= form.label :"latitude" %></th>
+    <td class="latitude"><%= form.text_field :latitude %></td>
+  </tr>
+  <tr>
+    <th class="longitude"><%= form.label :"longitude" %></th>
+    <td class="longitude"><%= form.text_field :longitude %></td>
+  </tr>
+</table>
+<div class="actions">
+  <%= form.submit "submit" %>
+</div>
+<% end %>
+

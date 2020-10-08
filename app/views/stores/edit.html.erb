@@ -1,2 +1,7 @@
-<h1>Stores#edit</h1>
-<p>Find me in app/views/stores/edit.html.erb</p>
+<h1>edit store only admin</h1>
+
+<%= render 'form', store: @store %>
+
+<div>
+  <%= link_to 'back', stores_path %>
+</div>
