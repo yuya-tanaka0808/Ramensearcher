@@ -4,4 +4,6 @@ class Store < ApplicationRecord
   validates :line_name, presence: true
   validates :station, presence:  true
   has_one :city
+  has_many :public_holiday
+  has_many :menus, dependent: :destroy
 end
