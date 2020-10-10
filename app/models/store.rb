@@ -6,4 +6,5 @@ class Store < ApplicationRecord
   has_one :city
   has_many :public_holiday
   has_many :menus, dependent: :destroy
+  has_many :openings, dependent: :destroy
 end

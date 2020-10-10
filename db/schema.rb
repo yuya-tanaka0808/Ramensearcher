@@ -10,13 +10,30 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_09_024321) do
+ActiveRecord::Schema.define(version: 2020_10_10_083341) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "cities", force: :cascade do |t|
     t.string "name", null: false
+  end
+
+  create_table "menus", force: :cascade do |t|
+    t.string "name", null: false
+    t.integer "price", null: false
+    t.string "taste", null: false
+    t.bigint "store_id"
+    t.index ["store_id"], name: "index_menus_on_store_id"
+  end
+
+  create_table "openings", force: :cascade do |t|
+    t.time "open_hour", null: false
+    t.time "last_order", null: false
+    t.string "day_week", null: false
+    t.string "weeks", null: false
+    t.bigint "store_id"
+    t.index ["store_id"], name: "index_openings_on_store_id"
   end
 
   create_table "public_holidays", force: :cascade do |t|
@@ -44,6 +61,8 @@ ActiveRecord::Schema.define(version: 2020_10_09_024321) do
     t.index ["public_holiday_id"], name: "index_stores_on_public_holiday_id"
   end
 
+  add_foreign_key "menus", "stores"
+  add_foreign_key "openings", "stores"
   add_foreign_key "stores", "cities"
   add_foreign_key "stores", "public_holidays"
 end
