@@ -1,4 +1,15 @@
 <h1>Store details</h1>
+<% @tag_number = 1 %>
+<% @store.images.each do |image| %>
+  <h3>image<%= @tag_number %></h3>
+  <% @tag_number += 1 %>
+
+  <p class = "container">
+    <strong>image:</strong>
+    <%= image.image %>
+  </p>
+<% end %>
+
 <p>name:<%= @store.name %></p>
 <p>address:<%= @store.address %></p>
 <p>contact:<%= @store.contact %></p>

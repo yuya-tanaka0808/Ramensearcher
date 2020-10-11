@@ -150,6 +150,15 @@
 
   <% end %>
   <br>
-
+  <br>
+  <% @tag_number = 1 %>
+  <%= form.fields_for :images do |image| %>
+    <h5>image<%= @tag_number %></h5>
+    <% @tag_number += 1 %>
+    <div>
+      <%= image.label :image %><br>
+      <%= image.file_field :image %>
+    </div>
+    <% end %>
   <%= form.submit 'submit' %>
 <% end %>
