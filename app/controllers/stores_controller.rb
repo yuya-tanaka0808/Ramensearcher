@@ -7,7 +7,7 @@ class StoresController < ApplicationController
   def new
     @store = Store.new
     5.times { @store.menus.build }
-    7.times { @store.openings.build }
+    2.times { @store.openings.build }
   end
 
   def create
@@ -21,6 +21,8 @@ class StoresController < ApplicationController
   end
 
   def edit
+    @store.menus.build
+    @store.openings.build
   end
 
   def update
@@ -53,13 +55,19 @@ class StoresController < ApplicationController
       menus_attributes: [
         :name,
         :price,
-        :taste
+        :taste,
+        :store_id,
+        :id,
+        :_destroy
       ],
-      opening_attributes: [
+      openings_attributes: [
         :open_hour,
         :last_order,
         :day_week,
-        :weeks
+        :weeks,
+        :store_id,
+        :id,
+        :_destroy
       ],
     )
   end

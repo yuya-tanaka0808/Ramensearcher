@@ -82,17 +82,17 @@
     <%= form.text_field :longitude %>
   </div>
 
-  <div class="feild">
-    <%= form.label :city_id %>
-    <br>
-    <%= form.text_field :city_id %>
-  </div>
+<!--  <div class="feild">-->
+    <%#= form.label :city_id %>
+<!--    <br>-->
+    <%#= form.text_field :city_id %>
+<!--  </div>-->
 
-  <div class="border_new">
-    <%= form.label :public_holiday_id %>
-    <br>
-    <%= form.text_field :public_holiday_id %>
-  </div>
+<!--  <div class="border_new">-->
+    <%#= form.label :public_holiday_id %>
+<!--    <br>-->
+    <%#= form.text_field :public_holiday_id %>
+<!--  </div>-->
 
   <% @tag_number = 1 %>
   <%= form.fields_for :menus do |menu| %>
@@ -125,23 +125,23 @@
       <%= opening.time_field :last_order %>
     </div>
     <div>
-      <%= opening.label :mon %>
-<!--      <%#= opening.collection_check_boxes :day_week, {:mon, :tue, :wed, :thu, :fri, :sat, :sun, :pub} %><br>-->
-      <%= opening.radio_button :day_week, :mon %><br>
-      <%= opening.label :tue %>
-      <%= opening.radio_button :day_week, :tue %><br>
-      <%= opening.label :wed %>
-      <%= opening.radio_button :day_week, :wed %><br>
-      <%= opening.label :thu %>
-      <%= opening.radio_button :day_week, :thu %><br>
-      <%= opening.label :fri %>
-      <%= opening.radio_button :day_week, :fri %><br>
-      <%= opening.label :sat %>
-      <%= opening.radio_button :day_week, :sat %><br>
-      <%= opening.label :sun %>
-      <%= opening.radio_button :day_week, :sun %><br>
-      <%= opening.label :pub %>
-      <%= opening.radio_button :day_week, :pub %><br>
+      <%= opening.label :day_week %><br>
+      <%= opening.text_field :day_week %><br>
+<!--      <%#= opening.radio_button :day_week, :mon %><br>-->
+      <%#= opening.label :tue %>
+<!--      <%#= opening.radio_button :day_week, :tue %><br>-->
+      <%#= opening.label :wed %>
+<!--      <%#= opening.radio_button :day_week, :wed %><br>-->
+      <%#= opening.label :thu %>
+<!--      <%#= opening.radio_button :day_week, :thu %><br>-->
+      <%#= opening.label :fri %>
+<!--      <%#= opening.radio_button :day_week, :fri %><br>-->
+      <%#= opening.label :sat %>
+<!--      <%#= opening.radio_button :day_week, :sat %><br>-->
+      <%#= opening.label :sun %>
+<!--      <%#= opening.radio_button :day_week, :sun %><br>-->
+      <%#= opening.label :pub %>
+<!--      <%#= opening.radio_button :day_week, :pub %><br>-->
     </div>
     <div>
       <%= opening.label :weeks %><br>

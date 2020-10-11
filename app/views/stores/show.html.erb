@@ -12,4 +12,52 @@
 <p>latitude:<%= @store.latitude %></p>
 <p>longitude:<%= @store.longitude %></p>
 
+<% @tag_number = 1 %>
+<% @store.menus.each do |menu| %>
+  <h3>menu<%= @tag_number %></h3>
+  <% @tag_number += 1 %>
+
+  <p class = "container">
+    <strong>name:</strong>
+    <%= menu.name %>
+  </p>
+  <p class = "container">
+    <strong>price:</strong>
+    <%= menu.price %>
+  </p>
+
+  <p class = "container">
+    <strong>taste:</strong>
+    <%= menu.taste %>
+  </p>
+
+<% end %>
+
+<% @tag_number = 1 %>
+<% @store.openings.each do |opening| %>
+  <h3>opening<%= @tag_number %></h3>
+  <% @tag_number += 1 %>
+
+  <p class = "container">
+    <strong>open_hour:</strong>
+    <%= opening.open_hour %>
+  </p>
+  <p class = "container">
+    <strong>last_order:</strong>
+    <%= opening.last_order %>
+  </p>
+
+  <p class = "container">
+    <strong>day_week:</strong>
+    <%= opening.day_week %>
+  </p>
+
+  <p class = "container">
+    <strong>weeks:</strong>
+    <%= opening.weeks %>
+  </p>
+
+<% end %>
+
+
 <%= link_to 'back', stores_path %>
