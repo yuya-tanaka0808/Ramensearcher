@@ -6,8 +6,8 @@ class Store < ApplicationRecord
   has_one :city
   has_many :public_holiday
   has_many :menus, dependent: :destroy, inverse_of: :store
-  has_many :openings, dependent: :destroy, inverse_of:  :store
+  has_many :openings, dependent: :destroy, inverse_of: :store
 
-  accepts_nested_attributes_for :menus, allow_destroy: true, reject_if:  :all_blank
-  accepts_nested_attributes_for :openings, allow_destroy: true, reject_if:  :all_blank
+  accepts_nested_attributes_for :menus, reject_if: :all_blank, allow_destroy: true
+  accepts_nested_attributes_for :openings, reject_if: :all_blank, allow_destroy: true
 end
