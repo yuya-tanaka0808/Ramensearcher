@@ -10,13 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_10_083341) do
+ActiveRecord::Schema.define(version: 2020_10_11_144643) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "cities", force: :cascade do |t|
     t.string "name", null: false
+  end
+
+  create_table "images", force: :cascade do |t|
+    t.text "image", null: false
+    t.bigint "store_id"
+    t.index ["store_id"], name: "index_images_on_store_id"
   end
 
   create_table "menus", force: :cascade do |t|
@@ -61,6 +67,7 @@ ActiveRecord::Schema.define(version: 2020_10_10_083341) do
     t.index ["public_holiday_id"], name: "index_stores_on_public_holiday_id"
   end
 
+  add_foreign_key "images", "stores"
   add_foreign_key "menus", "stores"
   add_foreign_key "openings", "stores"
   add_foreign_key "stores", "cities"

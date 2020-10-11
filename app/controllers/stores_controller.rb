@@ -8,6 +8,7 @@ class StoresController < ApplicationController
     @store = Store.new
     5.times { @store.menus.build }
     2.times { @store.openings.build }
+    1.times { @store.images.build }
   end
 
   def create
@@ -23,6 +24,7 @@ class StoresController < ApplicationController
   def edit
     @store.menus.build
     @store.openings.build
+    @store.images.build
   end
 
   def update
@@ -65,6 +67,12 @@ class StoresController < ApplicationController
         :last_order,
         :day_week,
         :weeks,
+        :store_id,
+        :id,
+        :_destroy
+      ],
+      images_attributes: [
+        :images,
         :store_id,
         :id,
         :_destroy
