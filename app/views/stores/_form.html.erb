@@ -1,67 +1,155 @@
-<%= form_with(model: store, local: true, url:stores_path) do |form| %>
-<% if store.errors.any? %>
+<%= form_with(model: @store, local: true) do |form| %>
+  <% if store.errors.any? %>
   <div id="error_explanation">
     <h2><%= pluralize(store.errors.count, "error") %> prohibited this store from being saved:</h2>
-    <ul>
-      <% store.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-    </ul>
-  </div>
-<% end %>
-<table>
-  <br>
-  <tr>
-    <th class="name"><%= form.label :"name" %></th>
-    <td class="name"><%= form.text_field :name %></td>
-  </tr>
-  <tr>
-    <th class="address"><%= form.label :"address" %></th>
-    <td class="address"><%= form.text_field :address %></td>
-  </tr>
-  <tr>
-    <th class="contact"><%= form.label :"contact" %></th>
-    <td class="contact"><%= form.text_field :contact %></td>
-  </tr>
-  <tr>
-    <th class="line_name"><%= form.label :"line_name" %></th>
-    <td class="line_name"><%= form.text_field :line_name %></td>
-  </tr>
-  <tr>
-    <th class="station"><%= form.label :"station" %></th>
-    <td class="station"><%= form.text_field :station %></td>
-  </tr>
-  <tr>
-    <th class="minutes_on_foot"><%= form.label :"minutes_on_foot" %></th>
-    <td class="minutes_on_foot"><%= form.text_field :minutes_on_foot %></td>
-  </tr>
-  <tr>
-    <th class="link"><%= form.label :"link" %></th>
-    <td class="link"><%= form.text_field :link %></td>
-  </tr>
-  <tr>
-    <th class="open_closed"><%= form.label :"open_closed" %></th>
-    <td class="open_closed"><%= form.text_field :open_closed %></td>
-  </tr>
-  <tr>
-    <th class="regular_holiday"><%= form.label :"regular_holiday" %></th>
-    <td class="regular_holiday"><%= form.text_field :regular_holiday %></td>
-  </tr>
-  <tr>
-    <th class="note"><%= form.label :"note" %></th>
-    <td class="note"><%= form.text_field :note %></td>
-  </tr>
-  <tr>
-    <th class="latitude"><%= form.label :"latitude" %></th>
-    <td class="latitude"><%= form.text_field :latitude %></td>
-  </tr>
-  <tr>
-    <th class="longitude"><%= form.label :"longitude" %></th>
-    <td class="longitude"><%= form.text_field :longitude %></td>
-  </tr>
-</table>
-<div class="actions">
-  <%= form.submit "submit" %>
-</div>
-<% end %>
+      <ul>
+        <% store.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
 
+  <div class="field">
+    <%= form.label :name %>
+    <br>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :address %>
+    <br>
+    <%= form.text_field :address %>
+  </div>
+
+  <div class="field">
+    <%= form.label :contact %>
+    <br>
+    <%= form.text_field :contact %>
+  </div>
+
+  <div class="field">
+    <%= form.label :line_name %>
+    <br>
+    <%= form.text_field :line_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :station %>
+    <br>
+    <%= form.text_field :station %>
+  </div>
+
+  <div class="field">
+    <%= form.label :minutes_on_foot %>
+    <br>
+    <%= form.text_field :minutes_on_foot %>
+  </div>
+
+  <div class="field">
+    <%= form.label :link %>
+    <br>
+    <%= form.text_field :link %>
+  </div>
+
+  <div class="field">
+    <%= form.label :open_closed %>
+    <br>
+    <%= form.text_field :open_closed %>
+  </div>
+
+  <div class="field">
+    <%= form.label :regular_holiday %>
+    <br>
+    <%= form.text_field :regular_holiday %>
+  </div>
+
+  <div class="field">
+    <%= form.label :note %>
+    <br>
+    <%= form.text_field :note %>
+  </div>
+
+  <div class="field">
+    <%= form.label :latitude %>
+    <br>
+    <%= form.text_field :latitude %>
+  </div>
+
+  <div class="field">
+    <%= form.label :longitude %>
+    <br>
+    <%= form.text_field :longitude %>
+  </div>
+
+  <div class="feild">
+    <%= form.label :city_id %>
+    <br>
+    <%= form.text_field :city_id %>
+  </div>
+
+  <div class="border_new">
+    <%= form.label :public_holiday_id %>
+    <br>
+    <%= form.text_field :public_holiday_id %>
+  </div>
+
+  <% @tag_number = 1 %>
+  <%= form.fields_for :menus do |menu| %>
+    <h5>menu<%= @tag_number %></h5>
+    <% @tag_number += 1 %>
+    <div>
+      <%= menu.label :name %><br>
+      <%= menu.text_field :name %>
+    </div>
+    <div>
+      <%= menu.label :price %><br>
+      <%= menu.text_field :price %>
+    </div>
+    <div>
+      <%= menu.label :"taste" %><br>
+      <%= menu.text_field :taste %><br>
+    </div>
+  <% end %>
+  <br>
+  <% @tag_number = 1 %>
+  <%= form.fields_for :openings do |opening| %>
+    <h5>opening<%= @tag_number %></h5>
+    <% @tag_number += 1 %>
+    <div>
+      <%= opening.label :open_hour %><br>
+      <%= opening.time_field :open_hour %>
+    </div>
+    <div>
+      <%= opening.label :last_order %><br>
+      <%= opening.time_field :last_order %>
+    </div>
+    <div>
+      <%= opening.label :mon %>
+<!--      <%#= opening.collection_check_boxes :day_week, {:mon, :tue, :wed, :thu, :fri, :sat, :sun, :pub} %><br>-->
+      <%= opening.radio_button :day_week, :mon %><br>
+      <%= opening.label :tue %>
+      <%= opening.radio_button :day_week, :tue %><br>
+      <%= opening.label :wed %>
+      <%= opening.radio_button :day_week, :wed %><br>
+      <%= opening.label :thu %>
+      <%= opening.radio_button :day_week, :thu %><br>
+      <%= opening.label :fri %>
+      <%= opening.radio_button :day_week, :fri %><br>
+      <%= opening.label :sat %>
+      <%= opening.radio_button :day_week, :sat %><br>
+      <%= opening.label :sun %>
+      <%= opening.radio_button :day_week, :sun %><br>
+      <%= opening.label :pub %>
+      <%= opening.radio_button :day_week, :pub %><br>
+    </div>
+    <div>
+      <%= opening.label :weeks %><br>
+      <%= opening.text_field :weeks %><br>
+    </div>
+
+  <% end %>
+  <br>
+
+  <%= form.submit 'submit' %>
+<% end %>
