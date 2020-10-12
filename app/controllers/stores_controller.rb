@@ -8,13 +8,15 @@ class StoresController < ApplicationController
     @store = Store.new
     5.times { @store.menus.build }
     2.times { @store.openings.build }
-    1.times { @store.images.build }
+    @store.images.build
   end
 
   def create
     @store = Store.new(store_params)
     if @store.save
       redirect_to stores_path
+    else
+      render :new
     end
   end
 
@@ -72,7 +74,7 @@ class StoresController < ApplicationController
         :_destroy
       ],
       images_attributes: [
-        :images,
+        :image,
         :store_id,
         :id,
         :_destroy
