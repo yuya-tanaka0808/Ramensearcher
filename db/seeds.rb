@@ -5,3 +5,16 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+require 'csv'
+
+# CSV.foreach('app/assets/csv/Tokyocities.csv', headers: true) do |row|
+#   City.create!(
+#     name: row['name']
+#   )
+# end
+
+# CSV.foreach('/Users/yusyan/workspace/Ramen_searcher/app/assets/csv/public_holiday.csv', headers: true) do |row|
+#   PublicHoliday.create!(
+#     date: row['日付']
+#   )
+# end

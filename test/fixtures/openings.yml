@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  open_hour: 2020-10-10 17:33:41
+  last_order: 2020-10-10 17:33:41
+  day_week: MyString
+  weeks: MyString
+  store: one
+
+two:
+  open_hour: 2020-10-10 17:33:41
+  last_order: 2020-10-10 17:33:41
+  day_week: MyString
+  weeks: MyString
+  store: two

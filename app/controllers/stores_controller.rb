@@ -6,12 +6,17 @@ class StoresController < ApplicationController
 
   def new
     @store = Store.new
+    5.times { @store.menus.build }
+    2.times { @store.openings.build }
+    @store.images.build
   end
 
   def create
     @store = Store.new(store_params)
     if @store.save
       redirect_to stores_path
+    else
+      render :new
     end
   end
 
@@ -19,6 +24,9 @@ class StoresController < ApplicationController
   end
 
   def edit
+    @store.menus.build
+    @store.openings.build
+    @store.images.build
   end
 
   def update
@@ -36,7 +44,42 @@ class StoresController < ApplicationController
 
   private
   def store_params
-    params.require(:store).permit(:name,:address, :contact, :line_name, :station, :minutes_on_foot, :link, :open_closed, :regular_holiday, :note, :latitude, :longitude)
+    params.require(:store).permit(
+      :name,
+      :address,
+      :contact,
+      :line_name,
+      :station,
+      :minutes_on_foot,
+      :link, :open_closed,
+      :regular_holiday,
+      :note,
+      :latitude,
+      :longitude,
+      menus_attributes: [
+        :name,
+        :price,
+        :taste,
+        :store_id,
+        :id,
+        :_destroy
+      ],
+      openings_attributes: [
+        :open_hour,
+        :last_order,
+        :day_week,
+        :weeks,
+        :store_id,
+        :id,
+        :_destroy
+      ],
+      images_attributes: [
+        :image,
+        :store_id,
+        :id,
+        :_destroy
+      ],
+    )
   end
 
   def find_store

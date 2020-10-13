@@ -10,10 +10,41 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_08_062638) do
+ActiveRecord::Schema.define(version: 2020_10_11_144643) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "cities", force: :cascade do |t|
+    t.string "name", null: false
+  end
+
+  create_table "images", force: :cascade do |t|
+    t.text "image", null: false
+    t.bigint "store_id"
+    t.index ["store_id"], name: "index_images_on_store_id"
+  end
+
+  create_table "menus", force: :cascade do |t|
+    t.string "name", null: false
+    t.integer "price", null: false
+    t.string "taste", null: false
+    t.bigint "store_id"
+    t.index ["store_id"], name: "index_menus_on_store_id"
+  end
+
+  create_table "openings", force: :cascade do |t|
+    t.time "open_hour", null: false
+    t.time "last_order", null: false
+    t.string "day_week", null: false
+    t.string "weeks", null: false
+    t.bigint "store_id"
+    t.index ["store_id"], name: "index_openings_on_store_id"
+  end
+
+  create_table "public_holidays", force: :cascade do |t|
+    t.date "date", null: false
+  end
 
   create_table "stores", force: :cascade do |t|
     t.string "name", null: false
@@ -30,6 +61,15 @@ ActiveRecord::Schema.define(version: 2020_10_08_062638) do
     t.float "longitude"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "city_id"
+    t.bigint "public_holiday_id"
+    t.index ["city_id"], name: "index_stores_on_city_id"
+    t.index ["public_holiday_id"], name: "index_stores_on_public_holiday_id"
   end
 
+  add_foreign_key "images", "stores"
+  add_foreign_key "menus", "stores"
+  add_foreign_key "openings", "stores"
+  add_foreign_key "stores", "cities"
+  add_foreign_key "stores", "public_holidays"
 end
