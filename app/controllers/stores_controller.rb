@@ -1,7 +1,8 @@
 class StoresController < ApplicationController
   before_action :find_store, only: [:show, :edit, :update, :destroy]
   def index
-    @stores = Store.all
+    @q = Store.ransack(params[:q])
+    @stores = @q.result(distinct: true)
   end
 
   def new
