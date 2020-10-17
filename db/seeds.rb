@@ -12,9 +12,26 @@ require 'csv'
 #     name: row['name']
 #   )
 # end
-
+#
 # CSV.foreach('/Users/yusyan/workspace/Ramen_searcher/app/assets/csv/public_holiday.csv', headers: true) do |row|
 #   PublicHoliday.create!(
 #     date: row['日付']
 #   )
 # end
+
+CSV.foreach('/Users/yusyan/workspace/Ramen_searcher/app/assets/csv/stores_seed.csv', headers: true) do |row|
+  Store.create!(
+    name: row['name'],
+    address: row['address'],
+    contact: row['contact'],
+    line_name: row['line_name'],
+    station: row['station'],
+    minutes_on_foot: row['minutes_on_foot'],
+    link: row['link'],
+    open_closed: row['open_closed'],
+    regular_holiday: row['regular_holiday'],
+    note: row['note'],
+    latitude: row['latitude'],
+    longitude: row['longitude'],
+  )
+end

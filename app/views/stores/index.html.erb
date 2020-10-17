@@ -1,5 +1,21 @@
 <h1>Ramen searcher</h1>
 <p id="notice"><%= notice %></p>
+<%= search_form_for @q do |i| %>
+  <%= i.label :name, "store_name" %>
+  <%= i.search_field :name_cont %>
+  <%= i.label :station, "station" %>
+  <%= i.search_field :station_cont %>
+  <%= i.submit "search" %>
+<% end %>
+<%= search_form_for @q do |f| %>
+  <%= f.label :openings_day_week_cont, "Day_week" %>
+  <%= f.select :openings_day_week_cont, [['月','月'],['火','火'],['水','水'],['木','木'],['金','金'],['土','土'],['日','日'],['祝','祝']],:include_blank => true %>
+  <%= f.label :openings_open_hour_lteq, "Search Time" %>
+  <%= f.time_select :openings_open_hour_lteq, :include_blank => true %>
+  <%= f.label :openings_last_order_gteq, "~" %>
+  <%= f.time_select :openings_last_order_gteq, :include_blank => true %>
+  <%= f.submit "search" %>
+<% end %>
 <table>
   <thead>
   <tr>
