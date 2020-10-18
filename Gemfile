@@ -41,6 +41,7 @@ gem 'ransack'
 gem 'devise'
 gem 'devise-i18n'
 gem 'rails_admin', '~> 2.0'
+gem 'cancancan'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
