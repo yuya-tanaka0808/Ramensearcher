@@ -5,6 +5,13 @@ class ApplicationController < ActionController::Base
     stores_path
   end
 
+  def admin_required
+    unless current_user.admin?
+      flash[:notice] = t('notice.admin_needed')
+      redirect_to stores_path
+    end
+  end
+
   protected
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [:name])

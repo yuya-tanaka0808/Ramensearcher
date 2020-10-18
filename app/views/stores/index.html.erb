@@ -1,15 +1,18 @@
 <h1>Ramen searcher</h1>
 <p id="notice"><%= notice %></p>
-<%= search_form_for @q do |i| %>
-  <%= i.label :name, "store_name" %>
-  <%= i.search_field :name_cont %>
-  <%= i.label :station, "station" %>
-  <%= i.search_field :station_cont %>
-  <%= i.submit "search" %>
-<% end %>
+<%#= search_form_for @q do |i| %>
+  <%#= i.label :name, "store_name" %>
+  <%#= i.search_field :name_cont %>
+  <%#= i.label :station, "station" %>
+  <%#= i.search_field :station_cont %>
+  <%#= i.submit "search" %>
+<%# end %>
 <%= search_form_for @q do |f| %>
+  <%= f.label :station, "station" %>
+  <%= f.search_field :station_cont %>
   <%= f.label :openings_day_week_cont, "Day_week" %>
   <%= f.select :openings_day_week_cont, [['月','月'],['火','火'],['水','水'],['木','木'],['金','金'],['土','土'],['日','日'],['祝','祝']],:include_blank => true %>
+  <br>
   <%= f.label :openings_open_hour_lteq, "Search Time" %>
   <%= f.time_select :openings_open_hour_lteq, :include_blank => true %>
   <%= f.label :openings_last_order_gteq, "~" %>
@@ -40,10 +43,18 @@
       <td><%= store.open_closed %></td>
       <td><%= store.regular_holiday %></td>
       <td><%= link_to 'show', store_path(store.id) %></td>
-      <td><%= link_to 'edit', edit_store_path(store) %></td>
-      <td><%= link_to 'destroy', store, method: :delete, data: {confirm: 'deleted？'} %></td>
+      <% if user_signed_in? %>
+        <% if current_user.admin? %>
+          <td><%= link_to 'edit', edit_store_path(store) %></td>
+          <td><%= link_to 'destroy', store, method: :delete, data: {confirm: 'deleted？'} %></td>
+        <% end %>
+      <% end %>
     </tr>
   <% end %>
   </tbody>
 </table>
-<%= link_to 'new_store', new_store_path %>
+<% if user_signed_in? %>
+  <% if current_user.admin? %>
+    <%= link_to 'new_store', new_store_path %>
+  <% end %>
+<% end %>

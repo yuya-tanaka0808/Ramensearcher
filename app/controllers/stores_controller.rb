@@ -1,5 +1,6 @@
 class StoresController < ApplicationController
   before_action :find_store, only: [:show, :edit, :update, :destroy]
+  before_action :admin_required, only: [:new, :edit, :destroy]
   def index
     @q = Store.ransack(params[:q])
     @stores = @q.result(distinct: true)
@@ -25,8 +26,8 @@ class StoresController < ApplicationController
   end
 
   def edit
-    @store.menus.build
-    @store.openings.build
+    5.times { @store.menus.build }
+    2.times { @store.openings.build }
     @store.images.build
   end
 
