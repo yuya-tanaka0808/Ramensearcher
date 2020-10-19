@@ -23,6 +23,7 @@ class StoresController < ApplicationController
   end
 
   def show
+    @favorite = current_user.favorites.find_by(store_id: @store.id)
   end
 
   def edit

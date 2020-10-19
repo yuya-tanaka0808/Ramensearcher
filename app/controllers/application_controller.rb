@@ -12,6 +12,13 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def login_required
+    if @current_user == nil
+      flash[:notice] = "ログインしてください"
+      redirect_to "/users/sign_in"
+    end
+  end
+
   protected
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [:name])
