@@ -23,7 +23,9 @@ class StoresController < ApplicationController
   end
 
   def show
-    @favorite = current_user.favorites.find_by(store_id: @store.id)
+    unless @current_user == nil
+      @favorite = current_user.favorites.find_by(store_id: @store.id)
+    end
   end
 
   def edit
