@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_18_150507) do
+ActiveRecord::Schema.define(version: 2020_10_19_112030) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -51,6 +51,15 @@ ActiveRecord::Schema.define(version: 2020_10_18_150507) do
 
   create_table "public_holidays", force: :cascade do |t|
     t.date "date", null: false
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.float "rating", null: false
+    t.text "comment", null: false
+    t.integer "user_id"
+    t.integer "store_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "stores", force: :cascade do |t|
