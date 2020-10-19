@@ -1,0 +1,7 @@
+
+<h3>レビュー一覧</h3>
+<% reviews.each do |review| %>
+  <h5><%= review.user.name %>さん</h5>
+  <%= review.comment %>
+  <%= review.rating %>
+<% end %>

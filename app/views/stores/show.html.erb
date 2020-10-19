@@ -75,6 +75,10 @@
   </p>
 
 <% end %>
-
-
+<%= render partial: 'reviews/index', locals: { reviews: @reviews, store: @store } %>
+<%#= link_to 'review', new_review_path %>
+<% if user_signed_in? && current_user.reviews.find_by(store_id: @store.id).nil? %>
+<%= render partial: 'reviews/form', locals: { review: @review, store: @store } %>
+  <% end %>
+<br>
 <%= link_to 'back', stores_path %>
