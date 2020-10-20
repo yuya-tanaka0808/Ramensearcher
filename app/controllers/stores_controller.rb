@@ -3,7 +3,7 @@ class StoresController < ApplicationController
   before_action :admin_required, only: [:new, :edit, :destroy]
   def index
     @q = Store.ransack(params[:q])
-    @stores = @q.result(distinct: true)
+    @stores = @q.result(distinct: true).page(params[:page]).per(10)
   end
 
   def new

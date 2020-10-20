@@ -53,6 +53,7 @@
   <% end %>
   </tbody>
 </table>
+<%= paginate @stores if @stores.present? %>
 <% if user_signed_in? %>
   <% if current_user.admin? %>
     <%= link_to 'new_store', new_store_path %>
