@@ -1,8 +1,9 @@
 class StoresController < ApplicationController
   before_action :find_store, only: [:show, :edit, :update, :destroy]
+  before_action :admin_required, only: [:new, :edit, :destroy]
   def index
     @q = Store.ransack(params[:q])
-    @stores = @q.result(distinct: true)
+    @stores = @q.result(distinct: true).page(params[:page]).per(10)
   end
 
   def new
@@ -22,11 +23,16 @@ class StoresController < ApplicationController
   end
 
   def show
+    unless @current_user == nil
+      @favorite = current_user.favorites.find_by(store_id: @store.id)
+    end
+    @reviews = Review.where(store_id: @store.id)
+    @review = @store.reviews.build
   end
 
   def edit
-    @store.menus.build
-    @store.openings.build
+    5.times { @store.menus.build }
+    2.times { @store.openings.build }
     @store.images.build
   end
 

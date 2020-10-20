@@ -1,0 +1,14 @@
+
+<h3>レビュー一覧</h3>
+<% reviews.each do |review| %>
+  <h5><%= review.user.name %>さん</h5>
+  <%= review.comment %>
+  <%= review.rating %>
+  <% if review.image.present? %>
+    <%= image_tag review.image.url, size: '614x985'%>
+  <% end %>
+  <% if review.user_id == current_user.id %>
+    <%= link_to 'edit', edit_review_path(review) %>
+    <%= link_to 'destroy', review, method: :delete, data: {confirm: 'deleted？'} %>
+  <% end %>
+<% end %>

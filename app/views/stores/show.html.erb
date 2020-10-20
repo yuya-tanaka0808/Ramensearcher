@@ -1,4 +1,5 @@
 <h1>Store details</h1>
+<p id="notice"><%= notice %></p>
 <% @tag_number = 1 %>
 <% @store.images.each do |image| %>
   <h3>image<%= @tag_number %></h3>
@@ -9,7 +10,13 @@
     <%= image_tag image.image.url, size: '616x985' %>
   </p>
 <% end %>
-
+<% if user_signed_in? %>
+  <% if @favorite.present? %>
+    <%= link_to 'お気に入り解除する', favorite_path(id: @favorite.id), method: :delete, class: 'btn btn-danger' %>
+  <% else %>
+    <%= link_to 'お気に入りする', favorites_path(store_id: @store.id), method: :post, class: 'btn btn-primary' %>
+  <% end %>
+<% end %>
 <p>name:<%= @store.name %></p>
 <p>address:<%= @store.address %></p>
 <p>contact:<%= @store.contact %></p>
@@ -69,6 +76,10 @@
   </p>
 
 <% end %>
-
-
+<%= render partial: 'reviews/index', locals: { reviews: @reviews, store: @store } %>
+<%#= link_to 'review', new_review_path %>
+<% if user_signed_in? && current_user.reviews.find_by(store_id: @store.id).nil? %>
+<%= render partial: 'reviews/form', locals: { review: @review, store: @store } %>
+  <% end %>
+<br>
 <%= link_to 'back', stores_path %>
