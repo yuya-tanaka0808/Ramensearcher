@@ -35,3 +35,15 @@ CSV.foreach('/Users/yusyan/workspace/Ramen_searcher/app/assets/csv/stores_seed.c
     longitude: row['longitude'],
   )
 end
+User.create!(name: "admin",
+             email: "admin@example.com",
+             password: 'password',
+             admin: true
+)
+14.times do |n|
+  User.create!(name: "number#{n}",
+               email: "number#{n}@example.com",
+               password: 'password',
+               password_confirmation: 'password',
+               )
+end
