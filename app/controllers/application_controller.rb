@@ -13,7 +13,7 @@ class ApplicationController < ActionController::Base
   end
 
   def login_required
-    if @current_user == nil
+    if current_user == nil
       flash[:notice] = "ログインしてください"
       redirect_to "/users/sign_in"
     end

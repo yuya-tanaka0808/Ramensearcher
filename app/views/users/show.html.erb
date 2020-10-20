@@ -4,5 +4,5 @@
 <h3>お気に入り店舗一覧</h3>
 <% @favorites.each do |favorite| %>
   <% store = Store.find_by(id: favorite.store_id) %>
-  <%= store.name %>
+  <%= link_to store.name, store_path(favorite.store.id) %>
 <% end %>
