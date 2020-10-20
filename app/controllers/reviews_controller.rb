@@ -1,5 +1,5 @@
 class ReviewsController < ApplicationController
-  before_action :find_review, only: [:edit, :update]
+  before_action :find_review, only: [:edit, :update, :destroy]
   def index
     @reviews = Review.all
   end
@@ -34,7 +34,7 @@ class ReviewsController < ApplicationController
 
   def destroy
     @review.destroy
-    redirect_to stores_path
+    redirect_to store_path(@review.store.id)
   end
   private
   def review_params
