@@ -1,4 +1,5 @@
 class ReviewsController < ApplicationController
+  before_action :find_review, only: [:edit, :update]
   def index
     @reviews = Review.all
   end
@@ -14,10 +15,13 @@ class ReviewsController < ApplicationController
       redirect_to store_path(@review.store.id),notice: "レビューしました！"
     else
       flash.now[:notice] = 'レビューに失敗しました！'
+      render :new
     end
   end
 
   def edit
+    @review = Review.find(params[:id])
+    @store = @review.store
   end
 
   def update
@@ -34,6 +38,9 @@ class ReviewsController < ApplicationController
   end
   private
   def review_params
-    params.require(:review).permit(:rating, :comment, :user_id, :store_id)
+    params.require(:review).permit(:rating, :comment, :user_id, :store_id, :image)
+  end
+  def find_review
+    @review = Review.find(params[:id])
   end
 end

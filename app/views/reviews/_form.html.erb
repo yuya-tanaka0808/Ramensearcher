@@ -19,5 +19,11 @@
     <%#= form.label :user_id %>
     <%= form.hidden_field :user_id, value: current_user.id %>
   </div>
+
+  <div class="field">
+    <%#= form.label :image %>
+    <%= form.file_field :image %>
+  </div>
+
   <%= form.submit 'submit' %>
 <% end %>
