@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_20_050553) do
+ActiveRecord::Schema.define(version: 2020_10_22_021636) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -78,10 +78,6 @@ ActiveRecord::Schema.define(version: 2020_10_20_050553) do
     t.float "longitude"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "city_id"
-    t.bigint "public_holiday_id"
-    t.index ["city_id"], name: "index_stores_on_city_id"
-    t.index ["public_holiday_id"], name: "index_stores_on_public_holiday_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -97,6 +93,4 @@ ActiveRecord::Schema.define(version: 2020_10_20_050553) do
   add_foreign_key "images", "stores"
   add_foreign_key "menus", "stores"
   add_foreign_key "openings", "stores"
-  add_foreign_key "stores", "cities"
-  add_foreign_key "stores", "public_holidays"
 end
