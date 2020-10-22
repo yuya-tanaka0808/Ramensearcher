@@ -1,7 +1,7 @@
-<h1>edit rebview</h1>
+<h1><%= t('view_title.models.review.edit') %></h1>
 
 <%= render 'form', review: @review %>
 
 <div>
-  <%= link_to 'back', stores_path %>
+  <%= link_to t('helpers.select.back'), stores_path %>
 </div>

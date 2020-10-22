@@ -14,7 +14,7 @@ class ApplicationController < ActionController::Base
 
   def login_required
     if current_user == nil
-      flash[:notice] = "ログインしてください"
+      flash[:notice] = t('notice.login_needed')
       redirect_to "/users/sign_in"
     end
   end

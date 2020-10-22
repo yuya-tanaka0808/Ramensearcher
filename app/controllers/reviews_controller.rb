@@ -12,9 +12,9 @@ class ReviewsController < ApplicationController
   def create
     @review = Review.new(review_params)
     if @review.save
-      redirect_to store_path(@review.store.id),notice: "レビューしました！"
+      redirect_to store_path(@review.store.id),notice: t('view.models.review.reviewed')
     else
-      flash.now[:notice] = 'レビューに失敗しました！'
+      flash.now[:notice] = t('view.models.review.missed')
       render :new
     end
   end
@@ -26,7 +26,7 @@ class ReviewsController < ApplicationController
 
   def update
     if @review.update(review_params)
-      redirect_to store_path(@review.store.id), notice: "review updated!"
+      redirect_to store_path(@review.store.id), notice: t('view.models.review.updated')
     else
       render :edit
     end

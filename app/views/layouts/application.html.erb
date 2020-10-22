@@ -11,16 +11,16 @@
 
   <body>
     <% if user_signed_in? %>
-      <%= link_to "検索一覧", stores_path %>
-      <%= link_to "プロフィール", user_path(current_user.id) %>
-      <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+      <%= link_to t('activerecord.attributes.search.index'), stores_path %>
+      <%= link_to t('activerecord.attributes.user.profile'), user_path(current_user.id) %>
+      <%= link_to t('activerecord.attributes.user.logout'), destroy_user_session_path, method: :delete %>
       <% if current_user.admin? %>
-        <%= link_to "Admin", '/admin' %>
-        <%= link_to "New Store", new_store_path %>
+        <%= link_to t('activerecord.attributes.user.admin'), '/admin' %>
+        <%= link_to t('view.models.store.new'), new_store_path %>
       <% end %>
     <% else %>
-      <%= link_to "新規登録", new_user_registration_path %>
-      <%= link_to "ログイン", new_user_session_path %>
+      <%= link_to t('activerecord.attributes.user.regist'), new_user_registration_path %>
+      <%= link_to t('activerecord.attributes.user.login'), new_user_session_path %>
     <% end %>
 <!--    <p class="notice"><%#= notice %></p>-->
 <!--    <p class="alert"><%#= alert %></p>-->

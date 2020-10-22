@@ -1,12 +1,12 @@
 <%= form_with(model: @review, local: true) do |form| %>
-<h1>review </h1>
+<h5><%= t('activerecord.attributes.review.form') %></h5>
   <div class="field">
     <%= form.label :rating %>
     <%= form.text_field :rating %>
   </div>
   <div class="field">
     <%= form.label :comment%>
-    <%= form.text_field :comment %>
+    <%= form.text_area :comment %>
   </div>
 
   <div class="field">

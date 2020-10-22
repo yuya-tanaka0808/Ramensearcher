@@ -1,14 +1,17 @@
-
-<h3>レビュー一覧</h3>
+<div class>
+<h3><%= t('activerecord.attributes.review.index') %></h3>
 <% reviews.each do |review| %>
-  <h5><%= review.user.name %>さん</h5>
-  <%= review.comment %>
-  <%= review.rating %>
+  <h5>
+    ☆<%= review.rating %>　　　<%= review.user.name %><%= t('view.models.review.word_of_mouth') %>
+      <% if user_signed_in? && current_user.id == review.user.id %>
+      <%= link_to t('helpers.select.edit'), edit_review_path(review) %>
+      <%= link_to t('helpers.select.destroy'), review, method: :delete, data: {confirm: 'deleted？'} %>
+    <% end %>
+  </h5>
+  <%= safe_join(review.comment.split("\n"),tag(:br)) %>
+  <br>
   <% if review.image.present? %>
-    <%= image_tag review.image.url, size: '614x985'%>
-  <% end %>
-  <% if review.user_id == current_user.id %>
-    <%= link_to 'edit', edit_review_path(review) %>
-    <%= link_to 'destroy', review, method: :delete, data: {confirm: 'deleted？'} %>
+    <%= image_tag review.image.url%>
   <% end %>
 <% end %>
+</div>
