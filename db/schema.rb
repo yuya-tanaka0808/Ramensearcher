@@ -10,14 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_22_021636) do
+ActiveRecord::Schema.define(version: 2020_10_22_022251) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "cities", force: :cascade do |t|
-    t.string "name", null: false
-  end
 
   create_table "favorites", force: :cascade do |t|
     t.integer "user_id"
@@ -47,10 +43,6 @@ ActiveRecord::Schema.define(version: 2020_10_22_021636) do
     t.string "weeks", null: false
     t.bigint "store_id"
     t.index ["store_id"], name: "index_openings_on_store_id"
-  end
-
-  create_table "public_holidays", force: :cascade do |t|
-    t.date "date", null: false
   end
 
   create_table "reviews", force: :cascade do |t|
