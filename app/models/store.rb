@@ -3,8 +3,6 @@ class Store < ApplicationRecord
   validates :address, presence: true
   validates :line_name, presence: true
   validates :station, presence:  true
-  has_one :city
-  has_many :public_holiday
   has_many :menus, dependent: :destroy, inverse_of: :store
   has_many :openings, dependent: :destroy, inverse_of: :store
   has_many :images, dependent: :destroy, inverse_of: :store

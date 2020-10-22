@@ -1,17 +1,5 @@
 require 'csv'
 
-# CSV.foreach('app/assets/csv/Tokyocities.csv', headers: true) do |row|
-#   City.create!(
-#     name: row['name']
-#   )
-# end
-#
-# CSV.foreach('/Users/yusyan/workspace/Ramen_searcher/app/assets/csv/public_holiday.csv', headers: true) do |row|
-#   PublicHoliday.create!(
-#     date: row['日付']
-#   )
-# end
-
 CSV.foreach('/Users/yusyan/workspace/Ramen_searcher/app/assets/csv/stores_seed.csv', headers: true) do |row|
   Store.create!(
     name: row['name'],

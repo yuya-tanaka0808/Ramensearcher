@@ -1,0 +1,58 @@
+ja:
+  activerecord:
+    models:
+      store: 店舗
+      user: ユーザー
+      favorite: お気に入り
+      image: イメージ
+      menu: メニュー
+      opening: 営業時間
+    attributes:
+      store:
+        info: 店舗情報
+        name: 店名
+        address: 内容
+        contact: 連絡先
+        line_name: 路線名
+        station: 駅名
+        minutes_on_foot: 徒歩時間
+        link: リンク
+        open_closed: 営業時間
+        regular_holiday: 定休日
+        note: 備考
+        latitude: 緯度
+        longitude: 軽度
+      user:
+        profile: プロフィール
+        logout: ログアウト
+        login: ログイン
+        regist: 新規ユーザー登録
+        name: 名前
+        email: メールアドレス
+        password: パスワード
+        password_confirmation: 確認用パスワード
+        admin: 管理者
+      review:
+        index: レビュー一覧
+        form: レビューする
+        rating: 評価
+        comment: コメント
+        image: 画像
+      opening:
+        open_hour: 開店時間
+        last_order: 閉店時間
+        day_week: 曜日
+        weeks: 週
+      menu:
+        name: メニュー名
+        price: 価格
+        taste: 味
+      search:
+        index: 検索一覧
+        station: 駅名入力
+        day_week: 曜日選択
+        search_time: 行きたい時間帯
+      image:
+        image: イメージ
+      favorite:
+        store: お気に入り店舗一覧

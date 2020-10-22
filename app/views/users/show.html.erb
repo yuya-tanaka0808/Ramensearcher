@@ -1,7 +1,7 @@
-<h1>Users#show</h1>
-<p>名前 : <%= @user.name %></p>
-<p>メールアドレス : <%= @user.email %></p>
-<h3>お気に入り店舗一覧</h3>
+<h1><%= t('activerecord.attributes.user.profile') %></h1>
+<p><%= t('activerecord.attributes.user.name') %> : <%= @user.name %></p>
+<p><%= t('activerecord.attributes.user.email') %> : <%= @user.email %></p>
+<h3><%= t('activerecord.attributes.favorite.store') %></h3>
 <% @favorites.each do |favorite| %>
   <% store = Store.find_by(id: favorite.store_id) %>
   <%= link_to store.name, store_path(favorite.store.id) %>

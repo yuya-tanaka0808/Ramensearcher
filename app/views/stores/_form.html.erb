@@ -96,7 +96,7 @@
 
   <% @tag_number = 1 %>
   <%= form.fields_for :menus do |menu| %>
-    <h5>menu<%= @tag_number %></h5>
+    <h5><%= t('activerecord.models.menu') %><%= @tag_number %></h5>
     <% @tag_number += 1 %>
     <div>
       <%= menu.label :name %><br>
@@ -114,7 +114,7 @@
   <br>
   <% @tag_number = 1 %>
   <%= form.fields_for :openings do |opening| %>
-    <h5>opening<%= @tag_number %></h5>
+    <h5><%= t('activerecord.models.opening') %><%= @tag_number %></h5>
     <% @tag_number += 1 %>
     <div>
       <%= opening.label :open_hour %><br>
@@ -153,7 +153,7 @@
   <br>
   <% @tag_number = 1 %>
   <%= form.fields_for :images do |image| %>
-    <h5>image<%= @tag_number %></h5>
+    <h5><%= t('activerecord.models.image') %><%= @tag_number %></h5>
     <% @tag_number += 1 %>
     <div>
       <%= image.label :image %><br>

@@ -40,7 +40,7 @@ class StoresController < ApplicationController
 
   def update
     if @store.update(store_params)
-      redirect_to store_path(@store.id), notice: "store updated!"
+      redirect_to store_path(@store.id), notice: t('view.models.store.updated')
     else
       render :edit
     end
