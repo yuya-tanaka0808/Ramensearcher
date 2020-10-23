@@ -1,34 +1,32 @@
 <div class="center">
-<p id="notice"><%= notice %></p>
-<%= search_form_for @q do |f| %>
-  <%= f.label :station, t('activerecord.attributes.search.station') %>
-  <%= f.search_field :station_cont %>
-  <%= f.label :openings_day_week_cont, t('activerecord.attributes.search.day_week') %>
-  <%= f.select :openings_day_week_cont, [['月','月'],['火','火'],['水','水'],['木','木'],['金','金'],['土','土'],['日','日'],['祝','祝']],:include_blank => true %>
-  <br>
-  <%= f.label :openings_open_hour_lteq, t('activerecord.attributes.search.search_time') %>
-  <%= f.time_select :openings_open_hour_lteq, :include_blank => true %>
-  <%= f.label :openings_last_order_gteq, "~" %>
-  <%= f.time_select :openings_last_order_gteq, :include_blank => true %>
-  <%= f.submit t('helpers.select.search') %>
-<% end %>
+  <p id="notice"><%= notice %></p>
+  <%= search_form_for @q do |f| %>
+    <%= f.label :station, t('activerecord.attributes.search.station') %>
+    <%= f.search_field :station_cont %>
+    <%= f.label :openings_day_week_cont, t('activerecord.attributes.search.day_week') %>
+    <%= f.select :openings_day_week_cont, [['月','月'],['火','火'],['水','水'],['木','木'],['金','金'],['土','土'],['日','日'],['祝','祝']],:include_blank => true %>
+    <br>
+    <%= f.label :openings_open_hour_lteq, t('activerecord.attributes.search.search_time') %>
+    <%= f.time_select :openings_open_hour_lteq, :include_blank => true %>
+    <%= f.label :openings_last_order_gteq, "~" %>
+    <%= f.time_select :openings_last_order_gteq, :include_blank => true %>
+    <%= f.submit t('helpers.select.search') %>
+  <% end %>
 </div>
+<p class="center">営業開始時間と終了時間から検索します。</p>
+<p class="center">検索開始時間に気をつけて入力してください。</p>
+
 <table class="center">
   <thead>
-  <tr>
-    <th><%= t('activerecord.attributes.store.name') %></th>
-    <th><%= t('activerecord.attributes.store.regular_holiday') %></th>
-    <th><%= t('activerecord.attributes.store.open_closed') %></th>
-    <th><%= t('activerecord.attributes.store.line_name') %></th>
-    <th><%= t('activerecord.attributes.store.station') %></th>
-    <th><%= t('activerecord.attributes.store.address') %></th>
-    <th><%= t('activerecord.attributes.store.contact') %></th>
-    <% if user_signed_in? %>
-      <% if current_user.admin? %>
-<!--        <th colspan="1"></th>-->
-      <% end %>
-    <% end %>
-  </tr>
+    <tr>
+      <th class="center"><%= t('activerecord.attributes.store.name') %></th>
+      <th class="center"><%= t('activerecord.attributes.store.regular_holiday') %></th>
+      <th class="center"><%= t('activerecord.attributes.store.open_closed') %></th>
+      <th class="center"><%= t('activerecord.attributes.store.line_name') %></th>
+      <th class="center"><%= t('activerecord.attributes.store.station') %></th>
+      <th class="center"><%= t('activerecord.attributes.store.address') %></th>
+      <th class="center"><%= t('activerecord.attributes.store.contact') %></th>
+    </tr>
   </thead>
   <tbody>
   <% @stores.each do |store| %>
@@ -50,23 +48,15 @@
       <td><%= store.station %></td>
       <td><%= store.address %></td>
       <td><%= store.contact %></td>
-
-      <!--      <td><%#= link_to t('helpers.select.show'), store_path(store.id) %></td>-->
-      <%# if user_signed_in? %>
-        <%# if current_user.admin? %>
-<!--          <td class="short"><%#= link_to t('helpers.select.edit'), edit_store_path(store),class: "btn btn-info btn-xs" %></td>-->
-<!--          <td class="short"><%#= link_to t('helpers.select.destroy'), store, method: :delete, data: {confirm: 'deleted？'},class: "btn btn-danger btn-xs" %></td>-->
-        <%# end %>
-      <%# end %>
     </tr>
   <% end %>
   </tbody>
 </table>
 <div class="center">
 <%= paginate @stores if @stores.present? %>
-<% if user_signed_in? %>
-  <% if current_user.admin? %>
-    <%= link_to  t('view.models.store.new'), new_store_path %>
+  <% if user_signed_in? %>
+    <% if current_user.admin? %>
+      <%= link_to  t('view.models.store.new'), new_store_path %>
+    <% end %>
   <% end %>
-<% end %>
 </div>

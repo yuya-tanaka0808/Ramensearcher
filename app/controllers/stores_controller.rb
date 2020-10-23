@@ -35,7 +35,7 @@ class StoresController < ApplicationController
   def edit
     3.times { @store.menus.build }
     2.times { @store.openings.build }
-    @store.images.build
+    3.times { @store.images.build }
   end
 
   def update

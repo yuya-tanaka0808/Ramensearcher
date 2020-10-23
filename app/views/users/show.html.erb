@@ -1,34 +1,33 @@
 <div class="center">
-<h1><%= t('activerecord.attributes.user.profile') %></h1>
-<p><%= t('activerecord.attributes.user.name') %> : <%= @user.name %></p>
-<p><%= t('activerecord.attributes.user.email') %> : <%= @user.email %></p>
-<h3><%= t('activerecord.attributes.favorite.store') %></h3>
+  <h1><%= t('activerecord.attributes.user.profile') %></h1>
+  <p><%= t('activerecord.attributes.user.name') %> : <%= @user.name %></p>
+  <p><%= t('activerecord.attributes.user.email') %> : <%= @user.email %></p>
+  <h3><%= t('activerecord.attributes.favorite.store') %></h3>
 
-<table class="center top_space">
-  <thead>
-  <tr>
-    <th><%= t('activerecord.attributes.store.name') %></th>
-    <th><%= t('activerecord.attributes.store.regular_holiday') %></th>
-    <th><%= t('activerecord.attributes.store.open_closed') %></th>
-    <th><%= t('activerecord.attributes.store.line_name') %></th>
-    <th><%= t('activerecord.attributes.store.station') %></th>
-    <th>  <%= t('activerecord.attributes.store.minutes_on_foot') %>
-</th>
-  </tr>
-</thead>
-  <tbody>
-    <% @favorites.each do |favorite| %>
-    <% store = Store.find_by(id: favorite.store_id) %>
-    <tr>
-    <td><%= link_to store.name, store_path(favorite.store.id) %></td>
-    <td><%= store.regular_holiday %></td>
-    <td><%= store.open_closed %></td>
-    <td><%= store.line_name %></td>
-    <td><%= store.station %></td>
-    <td><%= store.minutes_on_foot %><%= t('activerecord.attributes.store.minutes') %></td>
-    </tr>
-    <% end %>
-  </tbody>
-</table>
+  <table class="center top_space">
+    <thead>
+      <tr>
+        <th><%= t('activerecord.attributes.store.name') %></th>
+        <th><%= t('activerecord.attributes.store.regular_holiday') %></th>
+        <th><%= t('activerecord.attributes.store.open_closed') %></th>
+        <th><%= t('activerecord.attributes.store.line_name') %></th>
+        <th><%= t('activerecord.attributes.store.station') %></th>
+        <th>  <%= t('activerecord.attributes.store.minutes_on_foot') %></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @favorites.each do |favorite| %>
+      <% store = Store.find_by(id: favorite.store_id) %>
+      <tr>
+        <td><%= link_to store.name, store_path(favorite.store.id) %></td>
+        <td><%= store.regular_holiday %></td>
+        <td><%= store.open_closed %></td>
+        <td><%= store.line_name %></td>
+        <td><%= store.station %></td>
+        <td><%= store.minutes_on_foot %><%= t('activerecord.attributes.store.minutes') %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
   <br>
 </div>

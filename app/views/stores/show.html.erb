@@ -1,6 +1,7 @@
 <div class="center">
 <h1 class = "underline">
   <%=@store.name %>
+  <br>
   <% if user_signed_in? %>
     <% if @favorite.present? %>
       <%= link_to t('view.models.favorite.delete'), favorite_path(id: @favorite.id), method: :delete, class: 'btn btn-danger' %>
@@ -8,78 +9,51 @@
       <%= link_to t('view.models.favorite.create'), favorites_path(store_id: @store.id), method: :post, class: 'btn btn-primary' %>
     <% end %>
   <% end %>
-
 </h1>
 <p id="notice"><%= notice %></p>
 <br>
-<%# @tag_number = 1 %>
 <% @store.images.each do |image| %>
-<!--  <h3>image<%#= @tag_number %></h3>-->
-  <%# @tag_number += 1 %>
-<!--  <p class = "container">-->
-<!--    <strong>image:</strong>-->
     <%= image_tag image.image.url %>
-<!--  </p>-->
 <% end %>
 <p><%= t('activerecord.attributes.store.info') %></p>
 <table class = "center">
   <thead>
-  <tr>
-
-    <th class = "title"><%= t('activerecord.attributes.store.name') %></th>
-    <td><%= @store.name %></td>
-
-  </tr>
-  <tr>
-    <th class = "title"><%= t('activerecord.attributes.store.address') %></th>
-    <td><%= @store.address %></td>
-  </tr>
-  <tr>
-    <th class = "title"><%= t('activerecord.attributes.store.contact') %></th>
-    <td><%= @store.contact %></td>
-  </tr>
-
-  <tr>
-    <th class = "title"><%= t('activerecord.attributes.store.line_name') %></th>
-    <td><%= @store.line_name %></td>
-  </tr>
-
-  <tr>
-    <th class = "title"><%= t('activerecord.attributes.store.station') %></th>
-    <td><%= @store.station %></td>
-  </tr>
-
-  <tr>
-    <th class = "title"><%= t('activerecord.attributes.store.minutes_on_foot') %></th>
-    <td><%= @store.minutes_on_foot %>分</td>
-  </tr>
-
-  <tr>
-    <th class = "title"><%= t('activerecord.attributes.store.open_closed') %></th>
-    <td><%= @store.open_closed %></td>
-  </tr>
-
-  <tr>
-    <th class = "title"><%= t('activerecord.attributes.store.regular_holiday') %></th>
-    <td><%= @store.regular_holiday %></td>
-  </tr>
-  <tr>
-    <th class = "title"><%= t('activerecord.attributes.store.note') %></th>
-    <td><%= @store.note %></td>
-  </tr>
-
-<!--  <p>name:<%#= @store.name %></p>-->
-<!--<p>address:<%#= @store.address %></p>-->
-<!--<p>contact:<%#= @store.contact %></p>-->
-<!--<p>line_name:<%#= @store.line_name %></p>-->
-<!--<p>station:<%#= @store.station %></p>-->
-<!--<p>minutes_on_foot:<%#= @store.minutes_on_foot %>分</p>-->
-<!--<p>link:<%#= @store.link %></p>-->
-<!--<p>open_closed:<%#= @store.open_closed %></p>-->
-<!--<p>regular_holiday:<%#= @store.regular_holiday %></p>-->
-<!--<p>note:<%#= @store.note %></p>-->
-<!--<p>latitude:<%#= @store.latitude %></p>-->
-<!--<p>longitude:<%#= @store.longitude %></p>-->
+    <tr>
+      <th class = "title"><%= t('activerecord.attributes.store.name') %></th>
+      <td><%= @store.name %></td>
+    </tr>
+    <tr>
+      <th class = "title"><%= t('activerecord.attributes.store.address') %></th>
+      <td><%= @store.address %></td>
+    </tr>
+    <tr>
+      <th class = "title"><%= t('activerecord.attributes.store.contact') %></th>
+      <td><%= @store.contact %></td>
+    </tr>
+    <tr>
+      <th class = "title"><%= t('activerecord.attributes.store.line_name') %></th>
+      <td><%= @store.line_name %></td>
+    </tr>
+    <tr>
+      <th class = "title"><%= t('activerecord.attributes.store.station') %></th>
+      <td><%= @store.station %></td>
+    </tr>
+    <tr>
+      <th class = "title"><%= t('activerecord.attributes.store.minutes_on_foot') %></th>
+      <td><%= @store.minutes_on_foot %>分</td>
+    </tr>
+    <tr>
+      <th class = "title"><%= t('activerecord.attributes.store.open_closed') %></th>
+      <td><%= @store.open_closed %></td>
+    </tr>
+    <tr>
+      <th class = "title"><%= t('activerecord.attributes.store.regular_holiday') %></th>
+      <td><%= @store.regular_holiday %></td>
+    </tr>
+    <tr>
+      <th class = "title"><%= t('activerecord.attributes.store.note') %></th>
+      <td><%= @store.note %></td>
+    </tr>
   </thead>
 </table>
 
@@ -87,7 +61,6 @@
 <% @store.menus.each do |menu| %>
   <h3>menu<%= @tag_number %></h3>
   <% @tag_number += 1 %>
-
   <p>
     <strong>name:</strong>
     <%= menu.name %>
@@ -96,12 +69,10 @@
     <strong>price:</strong>
     <%= menu.price %>
   </p>
-
   <p>
     <strong>taste:</strong>
     <%= menu.taste %>
   </p>
-
 <% end %>
 <% if user_signed_in? %>
   <% if current_user.admin? %>
@@ -109,7 +80,6 @@
     <% @store.openings.each do |opening| %>
     <h3><%= t('activerecord.models.opening') %><%= @tag_number %></h3>
     <% @tag_number += 1 %>
-
     <p>
       <strong><%= t('activerecord.attributes.opening.open_hour') %>:</strong>
       <%= opening.open_hour %>
@@ -118,26 +88,22 @@
     <strong><%= t('activerecord.attributes.opening.last_order') %>:</strong>
       <%= opening.last_order %>
     </p>
-
     <p>
       <strong><%= t('activerecord.attributes.opening.day_week') %>:</strong>
       <%= opening.day_week %>
     </p>
-
     <p>
       <strong><%= t('activerecord.attributes.opening.weeks') %>:</strong>
       <%= opening.weeks %>
     </p>
-
-<% end %>
+    <% end %>
   <% end %>
 <% end %>
 
 <%= render partial: 'reviews/index', locals: { reviews: @reviews, store: @store } %>
-<%#= link_to 'review', new_review_path %>
 <% if user_signed_in? && current_user.reviews.find_by(store_id: @store.id).nil? %>
-<%= render partial: 'reviews/form', locals: { review: @review, store: @store } %>
-  <% end %>
+  <%= render partial: 'reviews/form', locals: { review: @review, store: @store } %>
+<% end %>
 <br>
 <%= link_to t('helpers.select.back'), stores_path %>
 </div>
