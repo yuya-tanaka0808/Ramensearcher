@@ -1,10 +1,10 @@
 <h1 class = "underline"><%=@store.name %></h1>
 <p id="notice"><%= notice %></p>
 <% if user_signed_in? %>
-  <% unless @favorite.present? %>
-    <%= link_to t('view.models.favorite.create'), favorites_path(store_id: @store.id), method: :post, class: 'btn btn-primary' %>
-  <% else %>
+  <% if @favorite.present? %>
     <%= link_to t('view.models.favorite.delete'), favorite_path(id: @favorite.id), method: :delete, class: 'btn btn-danger' %>
+  <% else %>
+    <%= link_to t('view.models.favorite.create'), favorites_path(store_id: @store.id), method: :post, class: 'btn btn-primary' %>
   <% end %>
 <% end %>
 <br>
@@ -84,16 +84,16 @@
   <h3>menu<%= @tag_number %></h3>
   <% @tag_number += 1 %>
 
-  <p class = "container">
+  <p>
     <strong>name:</strong>
     <%= menu.name %>
   </p>
-  <p class = "container">
+  <p>
     <strong>price:</strong>
     <%= menu.price %>
   </p>
 
-  <p class = "container">
+  <p>
     <strong>taste:</strong>
     <%= menu.taste %>
   </p>
@@ -106,21 +106,21 @@
     <h3><%= t('activerecord.models.opening') %><%= @tag_number %></h3>
     <% @tag_number += 1 %>
 
-    <p class = "container">
+    <p>
       <strong><%= t('activerecord.attributes.opening.open_hour') %>:</strong>
       <%= opening.open_hour %>
     </p>
-    <p class = "container">
+    <p>
     <strong><%= t('activerecord.attributes.opening.last_order') %>:</strong>
       <%= opening.last_order %>
     </p>
 
-    <p class = "container">
+    <p>
       <strong><%= t('activerecord.attributes.opening.day_week') %>:</strong>
       <%= opening.day_week %>
     </p>
 
-    <p class = "container">
+    <p>
       <strong><%= t('activerecord.attributes.opening.weeks') %>:</strong>
       <%= opening.weeks %>
     </p>

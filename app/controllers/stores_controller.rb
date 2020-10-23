@@ -23,10 +23,10 @@ class StoresController < ApplicationController
   end
 
   def show
-    unless @current_user == nil
+    unless current_user == nil
       @favorite = current_user.favorites.find_by(store_id: @store.id)
     else
-      @favorite = Favorite.find_by(store_id: @store.id)
+      @favorite = nil
     end
     @reviews = Review.where(store_id: @store.id)
     @review = @store.reviews.build
