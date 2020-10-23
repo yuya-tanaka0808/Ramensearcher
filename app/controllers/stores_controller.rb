@@ -8,7 +8,7 @@ class StoresController < ApplicationController
 
   def new
     @store = Store.new
-    5.times { @store.menus.build }
+    3.times { @store.menus.build }
     2.times { @store.openings.build }
     @store.images.build
   end
@@ -33,7 +33,7 @@ class StoresController < ApplicationController
   end
 
   def edit
-    5.times { @store.menus.build }
+    3.times { @store.menus.build }
     2.times { @store.openings.build }
     @store.images.build
   end
@@ -48,7 +48,7 @@ class StoresController < ApplicationController
 
   def destroy
     @store.destroy
-    redirect_to stores_path
+    redirect_to stores_path, notice: t('view.models.store.delete')
   end
 
   private
