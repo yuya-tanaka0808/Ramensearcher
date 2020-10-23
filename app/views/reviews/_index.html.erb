@@ -1,13 +1,14 @@
 <div class>
-<h3><%= t('activerecord.attributes.review.index') %></h3>
+<h2><%= t('activerecord.attributes.review.index') %></h2>
 <% reviews.each do |review| %>
-  <h5>
+  <h3>
     ☆<%= review.rating %>　　　<%= review.user.name %><%= t('view.models.review.word_of_mouth') %>
       <% if user_signed_in? && current_user.id == review.user.id %>
-      <%= link_to t('helpers.select.edit'), edit_review_path(review) %>
-      <%= link_to t('helpers.select.destroy'), review, method: :delete, data: {confirm: 'deleted？'} %>
+      <br>
+      <%= link_to t('helpers.select.edit'), edit_review_path(review),class: "btn btn-info btn-xs" %>
+      <%= link_to t('helpers.select.destroy'), review, method: :delete, data: {confirm: 'deleted？'},class: "btn btn-danger btn-xs" %>
     <% end %>
-  </h5>
+  </h3>
   <%= safe_join(review.comment.split("\n"),tag(:br)) %>
   <br>
   <% if review.image.present? %>

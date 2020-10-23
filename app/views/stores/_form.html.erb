@@ -10,6 +10,7 @@
     </div>
   <% end %>
 
+  <div class="separete">
   <div class="field">
     <%= form.label :name %>
     <br>
@@ -93,7 +94,9 @@
 <!--    <br>-->
     <%#= form.text_field :public_holiday_id %>
 <!--  </div>-->
-
+  </div>
+  <br>
+  <div class="separete">
   <% @tag_number = 1 %>
   <%= form.fields_for :menus do |menu| %>
     <h5><%= t('activerecord.models.menu') %><%= @tag_number %></h5>
@@ -111,7 +114,9 @@
       <%= menu.text_field :taste %><br>
     </div>
   <% end %>
+  </div>
   <br>
+  <div class="separete">
   <% @tag_number = 1 %>
   <%= form.fields_for :openings do |opening| %>
     <h5><%= t('activerecord.models.opening') %><%= @tag_number %></h5>
@@ -149,16 +154,21 @@
     </div>
 
   <% end %>
+  </div>
   <br>
   <br>
+  <div class="separete">
   <% @tag_number = 1 %>
   <%= form.fields_for :images do |image| %>
     <h5><%= t('activerecord.models.image') %><%= @tag_number %></h5>
     <% @tag_number += 1 %>
-    <div>
+    <div class="inline_block">
       <%= image.label :image %><br>
       <%= image.file_field :image %>
     </div>
     <% end %>
+    <br>
+    <br>
   <%= form.submit 'submit' %>
 <% end %>
+</div>

@@ -20,10 +20,10 @@
     <%= form.hidden_field :user_id, value: current_user.id %>
   </div>
 
-  <div class="field">
+  <div class="inline_block">
     <%#= form.label :image %>
     <%= form.file_field :image %>
   </div>
-
+  <br>
   <%= form.submit 'submit' %>
 <% end %>

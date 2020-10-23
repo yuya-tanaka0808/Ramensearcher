@@ -1,12 +1,16 @@
-<h1 class = "underline"><%=@store.name %></h1>
-<p id="notice"><%= notice %></p>
-<% if user_signed_in? %>
-  <% if @favorite.present? %>
-    <%= link_to t('view.models.favorite.delete'), favorite_path(id: @favorite.id), method: :delete, class: 'btn btn-danger' %>
-  <% else %>
-    <%= link_to t('view.models.favorite.create'), favorites_path(store_id: @store.id), method: :post, class: 'btn btn-primary' %>
+<div class="center">
+<h1 class = "underline">
+  <%=@store.name %>
+  <% if user_signed_in? %>
+    <% if @favorite.present? %>
+      <%= link_to t('view.models.favorite.delete'), favorite_path(id: @favorite.id), method: :delete, class: 'btn btn-danger' %>
+    <% else %>
+      <%= link_to t('view.models.favorite.create'), favorites_path(store_id: @store.id), method: :post, class: 'btn btn-primary' %>
+    <% end %>
   <% end %>
-<% end %>
+
+</h1>
+<p id="notice"><%= notice %></p>
 <br>
 <%# @tag_number = 1 %>
 <% @store.images.each do |image| %>
@@ -18,7 +22,7 @@
 <!--  </p>-->
 <% end %>
 <p><%= t('activerecord.attributes.store.info') %></p>
-<table>
+<table class = "center">
   <thead>
   <tr>
 
@@ -136,3 +140,4 @@
   <% end %>
 <br>
 <%= link_to t('helpers.select.back'), stores_path %>
+</div>
