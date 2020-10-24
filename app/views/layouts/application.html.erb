@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<div>
   <head>
     <title>RamenSearcher</title>
     <%= csrf_meta_tags %>
@@ -10,20 +10,46 @@
   </head>
 
   <body>
-    <% if user_signed_in? %>
-      <%= link_to t('activerecord.attributes.search.index'), stores_path %>
-      <%= link_to t('activerecord.attributes.user.profile'), user_path(current_user.id) %>
-      <%= link_to t('activerecord.attributes.user.logout'), destroy_user_session_path, method: :delete %>
-      <% if current_user.admin? %>
-        <%= link_to t('activerecord.attributes.user.admin'), '/admin' %>
-        <%= link_to t('view.models.store.new'), new_store_path %>
-      <% end %>
-    <% else %>
-      <%= link_to t('activerecord.attributes.user.regist'), new_user_registration_path %>
-      <%= link_to t('activerecord.attributes.user.login'), new_user_session_path %>
-    <% end %>
-<!--    <p class="notice"><%#= notice %></p>-->
-<!--    <p class="alert"><%#= alert %></p>-->
+  <div class="footerFixed">
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#gnavi">
+          <span class="sr-only">Ramen Searcher</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">Ramen Searcher
+        </a>
+      </div>
+      <div id="gnavi" class="collapse navbar-collapse">
+        <ul class="nav navbar-nav">
+          <% if user_signed_in? %>
+            <li><%= link_to t('activerecord.attributes.user.profile'), user_path(current_user.id) %></li>
+            <li><%= link_to t('activerecord.attributes.user.logout'), destroy_user_session_path, method: :delete %></li>
+          <% else %>
+            <li><%= link_to t('activerecord.attributes.user.regist'), new_user_registration_path %></li>
+            <li><%= link_to t('activerecord.attributes.user.login'), new_user_session_path %></li>
+          <% end %>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <%if user_signed_in? %>
+            <% if current_user.admin? %>
+              <li><%= link_to t('activerecord.attributes.user.admin'), '/admin' %></li>
+              <li><%= link_to t('view.models.store.new'), new_store_path %></li>
+            <% end %>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </nav>
     <%= yield %>
   </body>
+  <footer class="footer">
+    <div class="footer_container">
+      <p class="text-muted">Copyright © 2020 Yuya tanaka All Rights Reserved.</p>
+    </div>
+  </footer>
+</div>
 </html>

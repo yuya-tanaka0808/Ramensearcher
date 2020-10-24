@@ -11,17 +11,18 @@ ja:
       store:
         info: 店舗情報
         name: 店名
-        address: 内容
+        address: 住所
         contact: 連絡先
         line_name: 路線名
         station: 駅名
         minutes_on_foot: 徒歩時間
+        minutes: 分
         link: リンク
         open_closed: 営業時間
         regular_holiday: 定休日
         note: 備考
         latitude: 緯度
-        longitude: 軽度
+        longitude: 経度
       user:
         profile: プロフィール
         logout: ログアウト

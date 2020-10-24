@@ -1,5 +1,6 @@
 <%= form_with(model: @review, local: true) do |form| %>
-<h5><%= t('activerecord.attributes.review.form') %></h5>
+  <h5><%= t('activerecord.attributes.review.form') %></h5>
+  <h5>評価の点数はは0.1〜5まで入力可能です。</h5>
   <div class="field">
     <%= form.label :rating %>
     <%= form.text_field :rating %>
@@ -10,20 +11,16 @@
   </div>
 
   <div class="field">
-    <%#= form.label :store_id %>
     <%= form.hidden_field :store_id, value: @store.id %>
-    <%#= form.text_field :store_id %>
   </div>
 
   <div class="field">
-    <%#= form.label :user_id %>
     <%= form.hidden_field :user_id, value: current_user.id %>
   </div>
 
-  <div class="field">
-    <%#= form.label :image %>
+  <div class="inline_block">
     <%= form.file_field :image %>
   </div>
-
+  <br>
   <%= form.submit 'submit' %>
 <% end %>

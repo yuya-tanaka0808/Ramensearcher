@@ -8,7 +8,7 @@ class StoresController < ApplicationController
 
   def new
     @store = Store.new
-    5.times { @store.menus.build }
+    3.times { @store.menus.build }
     2.times { @store.openings.build }
     @store.images.build
   end
@@ -23,19 +23,19 @@ class StoresController < ApplicationController
   end
 
   def show
-    unless @current_user == nil
+    unless current_user == nil
       @favorite = current_user.favorites.find_by(store_id: @store.id)
     else
-      @favorite = Favorite.find_by(store_id: @store.id)
+      @favorite = nil
     end
     @reviews = Review.where(store_id: @store.id)
     @review = @store.reviews.build
   end
 
   def edit
-    5.times { @store.menus.build }
+    3.times { @store.menus.build }
     2.times { @store.openings.build }
-    @store.images.build
+    3.times { @store.images.build }
   end
 
   def update
@@ -48,7 +48,7 @@ class StoresController < ApplicationController
 
   def destroy
     @store.destroy
-    redirect_to stores_path
+    redirect_to stores_path, notice: t('view.models.store.delete')
   end
 
   private
