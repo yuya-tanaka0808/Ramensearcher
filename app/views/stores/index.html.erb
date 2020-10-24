@@ -54,9 +54,4 @@
 </table>
 <div class="center">
 <%= paginate @stores if @stores.present? %>
-  <% if user_signed_in? %>
-    <% if current_user.admin? %>
-      <%= link_to  t('view.models.store.new'), new_store_path %>
-    <% end %>
-  <% end %>
 </div>

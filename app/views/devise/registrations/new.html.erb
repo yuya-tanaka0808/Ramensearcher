@@ -6,12 +6,12 @@
        <!--サインアップ時に名前を入力できるようにフォームを追加-->
       <div class="field">
 <!--    <%#= f.label :name %><br />-->
-        <%= f.text_field :name, autofocus: true, placeholder: "name", type: "text", id: "username" %>
+        <%= f.text_field :name, autofocus: true, placeholder: "name", type: "text", id: "user_name" %>
       </div>
 
       <div class="field">
 <!--    <%#= f.label :email %><br />-->
-        <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Email", type: "text", id: "username" %>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Email", type: "text", id: "user_email" %>
       </div>
 
       <div class="field">
@@ -24,7 +24,7 @@
 
       <div class="field">
 <!--        <%#= f.label :password_confirmation %><br />-->
-        <%= f.password_field :password_confirmation, autocomplete: "new-password",placeholder: "Password_confirmation",type: "password", id: "password" %>
+        <%= f.password_field :password_confirmation, autocomplete: "new-password",placeholder: "Password_confirmation",type: "password", id: "passwordconfirm" %>
       </div>
 
   <div class="actions">

@@ -2,9 +2,9 @@
   <section id="content">
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
       <h1><%= t('.sign_in') %></h1>
-      <%= f.email_field :email, autofocus: true, autocomplete: "email",placeholder: "Email", type: "text", id: "username" %>
+      <%= f.email_field :email, autofocus: true, autocomplete: "email",placeholder: "Email", type: "text", id: "user_email" %>
       <%= f.password_field :password, autocomplete: "current-password",placeholder: "Password", type: "password", id: "password" %>
-      <%= f.submit t('.sign_in') %><br><br><br>
+      <%= f.submit 'Log in' %><br><br><br>
       <%= render "devise/shared/links" %>
     <% end %>
   </section>
