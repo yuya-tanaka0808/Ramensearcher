@@ -36,6 +36,7 @@ RSpec.describe Store, type: :model do
   end
   before do
     store = Store.new(name: '店', address:'失敗テスト',line_name:'中央線',station:'中野駅')
+    user = User.new(name: 'tanaka', email:'tanaka@example.com',encrypted_password:'password')
   end
   describe '営業時間登録機能' do
     context '営業開始時間が空' do
@@ -68,7 +69,7 @@ RSpec.describe Store, type: :model do
         expect(opening).not_to be_valid
       end
     end
-    context '週が不正' do
+    context '週が不正な値' do
       it 'バリデーションにひっかかる' do
         opening = Opening.new(open_hour: '10:00', last_order: '19:00', day_week: '月火水木金土', weeks: 'aaa', store_id: 'store.id' )
         expect(opening).not_to be_valid
@@ -100,6 +101,32 @@ RSpec.describe Store, type: :model do
       it 'バリデーションにひっかかる' do
         image = Image.new(image: '',store_id: 'store.id')
         expect(image).not_to be_valid
+      end
+    end
+  end
+  describe 'レビュー登録機能' do
+    context '評価が空' do
+      it 'バリデーションにひっかかる' do
+        review = Review.new(rating: '',comment: 'とてもおいしい', store_id: 'store.id', user_id: 'user.id')
+        expect(review).not_to be_valid
+      end
+    end
+    context '評価が5より上' do
+      it 'バリデーションにひっかかる' do
+        review = Review.new(rating: '10',comment: 'とてもおいしい', store_id: 'store.id', user_id: 'user.id')
+        expect(review).not_to be_valid
+      end
+    end
+    context '評価が0' do
+      it 'バリデーションにひっかかる' do
+        review = Review.new(rating: '0',comment: 'とてもおいしい', store_id: 'store.id', user_id: 'user.id')
+        expect(review).not_to be_valid
+      end
+    end
+    context 'コメントが空' do
+      it 'バリデーションにひっかかる' do
+        review = Review.new(rating: '5',comment: '', store_id: 'store.id', user_id: 'user.id')
+        expect(review).not_to be_valid
       end
     end
   end
