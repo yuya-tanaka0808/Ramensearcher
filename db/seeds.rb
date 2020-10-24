@@ -1,6 +1,6 @@
 require 'csv'
 
-CSV.foreach('/Users/yusyan/workspace/Ramen_searcher/app/assets/csv/stores_seed.csv', headers: true) do |row|
+CSV.foreach('app/assets/csv/stores_seed.csv', headers: true) do |row|
   Store.create!(
     name: row['name'],
     address: row['address'],
