@@ -14,8 +14,8 @@ class ReviewsController < ApplicationController
     if @review.save
       redirect_to store_path(@review.store.id),notice: t('view.models.review.reviewed')
     else
-      flash.now[:notice] = t('view.models.review.missed')
-      render :new
+      redirect_to store_path(@review.store.id),notice:  t('view.models.review.missed')
+
     end
   end
 
