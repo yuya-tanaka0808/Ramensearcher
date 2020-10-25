@@ -2,6 +2,15 @@
 <h1 class = "underline">
   <%=@store.name %>
   <br>
+  <% if @review.errors.any? %>
+    <div class = "alert-warning short">
+      <ul>
+        <% @review.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
   <% if user_signed_in? %>
     <% if @favorite.present? %>
       <%= link_to t('view.models.favorite.delete'), favorite_path(id: @favorite.id), method: :delete, class: 'btn btn-danger' %>

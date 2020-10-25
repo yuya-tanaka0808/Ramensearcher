@@ -1,5 +1,6 @@
 <div class>
 <h2><%= t('activerecord.attributes.review.index') %></h2>
+<% if @reviews.present? %>
 <% reviews.each do |review| %>
   <h3>
     ☆<%= review.rating %>    <%= review.user.name %><%= t('view.models.review.word_of_mouth') %>
@@ -16,3 +17,4 @@
   <% end %>
 <% end %>
 </div>
+<% end %>

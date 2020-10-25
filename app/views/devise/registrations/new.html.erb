@@ -1,7 +1,11 @@
+
+<div class="center">
+  <%= render "devise/shared/error_messages", resource: resource %>  
+</div>
 <div class="container">
   <section id="content">
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-      <%= render "devise/shared/error_messages", resource: resource %>
+
       <h1><%= t('.sign_up') %></h1>
        <!--サインアップ時に名前を入力できるようにフォームを追加-->
       <div class="field">

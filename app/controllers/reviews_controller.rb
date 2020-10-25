@@ -11,11 +11,12 @@ class ReviewsController < ApplicationController
 
   def create
     @review = Review.new(review_params)
+    @store = @review.store
     if @review.save
-      redirect_to store_path(@review.store.id),notice: t('view.models.review.reviewed')
+      redirect_to store_path(@store.id),notice: t('view.models.review.reviewed')
     else
-      redirect_to store_path(@review.store.id),notice:  t('view.models.review.missed')
-
+      render template: "stores/show"
+      # redirect_to store_path(@review.store.id),notice:  t('view.models.review.missed')
     end
   end
 
