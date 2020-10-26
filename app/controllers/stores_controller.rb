@@ -48,7 +48,7 @@ class StoresController < ApplicationController
 
   def destroy
     @store.destroy
-    redirect_to stores_path, notice: t('view.models.store.delete')
+    redirect_to stores_path, notice: t('view.models.store.deleted')
   end
 
   private
