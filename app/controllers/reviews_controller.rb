@@ -16,7 +16,6 @@ class ReviewsController < ApplicationController
       redirect_to store_path(@store.id),notice: t('view.models.review.reviewed')
     else
       render template: "stores/show"
-      # redirect_to store_path(@review.store.id),notice:  t('view.models.review.missed')
     end
   end
 
