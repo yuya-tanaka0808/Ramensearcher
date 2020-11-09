@@ -134,9 +134,9 @@
   <%= form.fields_for :images do |image| %>
     <h5><%= t('activerecord.models.image') %><%= @tag_number %></h5>
     <% @tag_number += 1 %>
-    <div class="inline_block custom-file">
-      <%= image.file_field :image, class: "custom-file-input" %>
-      <label class="custom-file-label" for="myfile">ファイルを選択してください。</label>
+    <div class="inline_block form-group">
+      <%= image.file_field :image, class: "form-control-file" %>
+     <small>最大10MB</small>
     </div>
   <% end %>
   <br>

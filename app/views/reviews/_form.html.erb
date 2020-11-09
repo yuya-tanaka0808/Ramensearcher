@@ -18,10 +18,10 @@
   <div class="field">
     <%= form.hidden_field :user_id, value: current_user.id %>
   </div>
-
-  <div class="inline_block custom-file">
-    <%= form.file_field :image, class: "custom-file-input" %>
-    <label class="custom-file-label" for="myfile">ファイルを選択してください。</label>
+    <br>
+  <div class="inline_block form-group">
+    <%= form.file_field :image, class: "form-control-file" %>
+    <small>最大10MB</small>
   </div>
   <br>
   <%= form.submit 'submit' %>
