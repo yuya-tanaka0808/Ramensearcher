@@ -10,43 +10,52 @@
   </head>
 
   <body>
-  <div class="footerFixed">
-  <nav class="navbar navbar-default">
-    <div class="container-fluid">
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#gnavi">
-          <span class="sr-only">Ramen Searcher</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand" href="/">Ramen Searcher
-        </a>
-      </div>
-      <div id="gnavi" class="collapse navbar-collapse">
-        <ul class="nav navbar-nav">
+    <nav class="navbar navbar-default bg-dark navbar-dark navbar-expand-md mb-3">
+      <div class="container-fluid">
+
+      <a class="navbar-brand" href="/">Ramen Searcher</a>
+      <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarContent">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div id="navbarContent" class="collapse navbar-collapse">
+        <ul class="navbar-nav">
           <% if user_signed_in? %>
-            <li><%= link_to t('activerecord.attributes.user.profile'), user_path(current_user.id) %></li>
-            <li><%= link_to t('activerecord.attributes.user.logout'), destroy_user_session_path, method: :delete %></li>
+          <li class="nav-item navbar-light">
+            <%= link_to t('activerecord.attributes.user.profile'), user_path(current_user.id) ,{class: "nav-link"}%>
+          </li>
+          <li class="nav-item">
+            <%= link_to t('activerecord.attributes.user.logout'), destroy_user_session_path, method: :delete, class: "nav-link" %>
+          </li>
           <% else %>
-            <li><%= link_to t('activerecord.attributes.user.regist'), new_user_registration_path %></li>
-            <li><%= link_to t('activerecord.attributes.user.login'), new_user_session_path %></li>
+            <li class="nav-item">
+              <%= link_to t('activerecord.attributes.user.regist'), new_user_registration_path,{class: "nav-link"} %>
+            </li>
+            <li class="nav-item">
+              <%= link_to t('activerecord.attributes.user.login'), new_user_session_path,{class: "nav-link"} %>
+            </li>
           <% end %>
         </ul>
-        <ul class="nav navbar-nav navbar-right">
-          <%if user_signed_in? %>
-            <% if current_user.admin? %>
-              <li><%= link_to t('activerecord.attributes.user.admin'), '/admin' %></li>
-              <li><%= link_to t('view.models.store.new'), new_store_path %></li>
+          <ul class="navbar-nav ml-auto">
+            <%if user_signed_in? %>
+              <% if current_user.admin? %>
+                <li class="nav-item navbar-light">
+                  <%= link_to t('activerecord.attributes.user.admin'), '/admin',{class: "nav-link"} %>
+                </li>
+                <li class="nav-item navbar-light">
+                  <%= link_to t('view.models.store.new'), new_store_path,{class: "nav-link"} %>
+                </li>
+              <% end %>
             <% end %>
-          <% end %>
-        </ul>
+          </ul>
       </div>
-    </div>
-  </nav>
+      </div>
+    </nav>
     <%= yield %>
   </body>
-  <footer class="footer">
+  <div class="push">
+
+  </div>
+  <footer class="footer bg-dark">
     <div class="footer_container">
       <p class="text-muted">Copyright © 2020 Yuya tanaka All Rights Reserved.</p>
     </div>
