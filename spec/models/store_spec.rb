@@ -3,11 +3,11 @@ require 'rails_helper'
 RSpec.describe Store, type: :model do
   describe '店舗登録機能', type: :model do
     describe'バリデーションのテスト' do
-      # context 'バリデーション項目全てに入力されている場合' do
-      #   it '店舗登録される'
-      #   store = Store.new(name: 'store', address:'address',line_name:'中央線',station:'中野駅')
-      #   expect(store).to be_valid
-      # end
+      context 'バリデーション項目全てに入力されている場合' do
+        it '店舗登録される'
+        store = Store.new(name: 'store', address:'address',line_name:'中央線',station:'中野駅')
+        expect(store).to be_valid
+      end
       context '店名が空の場合' do
         it 'バリデーションにひっかかる' do
           store = Store.new(name: '', address:'失敗テスト',line_name:'中央線',station:'中野駅')
