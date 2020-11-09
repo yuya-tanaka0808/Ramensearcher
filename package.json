@@ -2,7 +2,7 @@
   "name": "Ramen_searcher",
   "private": true,
   "dependencies": {
-    "bootstrap": "3",
+    "bootstrap": "4",
     "jquery": "^3.5.1"
   }
 }
