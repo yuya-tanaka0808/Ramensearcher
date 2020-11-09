@@ -9,79 +9,80 @@
       </ul>
     </div>
   <% end %>
-  <div class="separete">
-    <div class="field">
+  <div class="container">
+  <!-- <div class="separete"> -->
+    <div class="field form-group">
       <%= form.label :name %>
       <br>
-      <%= form.text_field :name %>
+      <%= form.text_field :name ,class: "form-control",placeholder: "店名を入力(スペースは半角で統一)"%>
     </div>
 
-    <div class="field">
+    <div class="field form-group">
       <%= form.label :address %>
       <br>
-      <%= form.text_field :address %>
+      <%= form.text_field :address,class: "form-control",placeholder: "住所を入力" %>
     </div>
 
-    <div class="field">
+    <div class="field form-group">
       <%= form.label :contact %>
       <br>
-      <%= form.text_field :contact %>
+      <%= form.text_field :contact,class: "form-control",placeholder: "連絡先を入力" %>
     </div>
 
-    <div class="field">
+    <div class="field form-group">
       <%= form.label :line_name %>
       <br>
-      <%= form.text_field :line_name %>
+      <%= form.text_field :line_name,class: "form-control",placeholder: "路線名を入力" %>
     </div>
 
-    <div class="field">
+    <div class="field form-group">
       <%= form.label :station %>
       <br>
-      <%= form.text_field :station %>
+      <%= form.text_field :station,class: "form-control",placeholder: "最寄り駅を入力" %>
     </div>
 
-    <div class="field">
+    <div class="field form-group">
       <%= form.label :minutes_on_foot %>
       <br>
-      <%= form.text_field :minutes_on_foot %>
+      <%= form.text_field :minutes_on_foot,class: "form-control",placeholder: "徒歩時間を入力(数字のみ)" %>
     </div>
 
-    <div class="field">
+    <div class="field form-group">
       <%= form.label :link %>
       <br>
-      <%= form.text_field :link %>
+      <%= form.text_field :link,class: "form-control",placeholder: "リンクを入力" %>
     </div>
 
-    <div class="field">
+    <div class="field form-group">
       <%= form.label :open_closed %>
       <br>
-      <%= form.text_field :open_closed %>
+      <%= form.text_field :open_closed,class: "form-control",placeholder: "営業時間を入力(表示用)" %>
     </div>
 
-    <div class="field">
+    <div class="field form-group">
       <%= form.label :regular_holiday %>
       <br>
-      <%= form.text_field :regular_holiday %>
+      <%= form.text_field :regular_holiday,class: "form-control",placeholder: "定休日を入力(表示用)" %>
     </div>
 
-    <div class="field">
+    <div class="field form-group">
       <%= form.label :note %>
       <br>
-      <%= form.text_field :note %>
+      <%= form.text_field :note,class: "form-control",placeholder: "備考を入力(席数など)" %>
     </div>
 
-    <div class="field">
+    <div class="field form-group">
       <%= form.label :latitude %>
       <br>
-      <%= form.text_field :latitude %>
+      <%= form.text_field :latitude,class: "form-control",placeholder: "緯度を入力(Googlemap用)" %>
     </div>
 
-    <div class="field">
+    <div class="field form-group">
       <%= form.label :longitude %>
       <br>
-      <%= form.text_field :longitude %>
+      <%= form.text_field :longitude,class: "form-control",placeholder: "経度を入力(Googlemap用)" %>
     </div>
-  </div>
+  <!-- </div> -->
   <br>
   <div class="separete">
   <% @tag_number = 1 %>
@@ -142,4 +143,5 @@
   <br>
   <%= form.submit 'submit' %>
 <% end %>
+</div>
 </div>
