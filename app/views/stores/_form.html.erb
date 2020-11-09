@@ -84,59 +84,59 @@
     </div>
   <!-- </div> -->
   <br>
-  <div class="separete">
+  <div>
   <% @tag_number = 1 %>
   <%= form.fields_for :menus do |menu| %>
     <h5><%= t('activerecord.models.menu') %><%= @tag_number %></h5>
     <% @tag_number += 1 %>
-    <div>
+    <div class="form-group">
       <%= menu.label :name %><br>
-      <%= menu.text_field :name %>
+      <%= menu.text_field :name,class: "form-control",placeholder: "品名を入力" %>
     </div>
-    <div>
+    <div class="form-group">
       <%= menu.label :price %><br>
-      <%= menu.text_field :price %>
+      <%= menu.text_field :price,class: "form-control",placeholder: "価格を入力" %>
     </div>
-    <div>
+    <div class="form-group">
       <%= menu.label :"taste" %><br>
-      <%= menu.text_field :taste %><br>
+      <%= menu.text_field :taste,class: "form-control",placeholder: "味を入力(検索用)" %><br>
     </div>
   <% end %>
   </div>
   <br>
-  <div class="separete">
+  <div>
   <% @tag_number = 1 %>
   <%= form.fields_for :openings do |opening| %>
     <h5><%= t('activerecord.models.opening') %><%= @tag_number %></h5>
     <% @tag_number += 1 %>
-    <div>
+    <div class="form-group">
       <%= opening.label :open_hour %><br>
-      <%= opening.time_field :open_hour %>
+      <%= opening.time_field :open_hour,class: "form-control" %>
     </div>
     <div>
       <%= opening.label :last_order %><br>
-      <%= opening.time_field :last_order %>
+      <%= opening.time_field :last_order,class: "form-control" %>
     </div>
     <div>
       <%= opening.label :day_week %><br>
-      <%= opening.text_field :day_week %><br>
+      <%= opening.text_field :day_week,class: "form-control",placeholder: "曜日を入力" %><br>
     </div>
     <div>
       <%= opening.label :weeks %><br>
-      <%= opening.text_field :weeks %><br>
+      <%= opening.text_field :weeks,class: "form-control",placeholder: "週を入力" %><br>
     </div>
   <% end %>
   </div>
   <br>
   <br>
-  <div class="separete">
+  <div>
   <% @tag_number = 1 %>
   <%= form.fields_for :images do |image| %>
     <h5><%= t('activerecord.models.image') %><%= @tag_number %></h5>
     <% @tag_number += 1 %>
-    <div class="inline_block">
-      <%= image.label :image %><br>
-      <%= image.file_field :image %>
+    <div class="inline_block custom-file">
+      <%= image.file_field :image, class: "custom-file-input" %>
+      <label class="custom-file-label" for="myfile">ファイルを選択してください。</label>
     </div>
   <% end %>
   <br>
