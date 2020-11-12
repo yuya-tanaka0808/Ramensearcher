@@ -5,9 +5,7 @@ FactoryBot.define do
     line_name { '中央線' }
     station { '中野駅' }
     after(:create) do |store|
-      # store.opening = FactoryBot.
       create(:opening, store: store)
-      # store.menu = FactoryBot.create(:menu)
       create(:menu, store: store)
     end
   end

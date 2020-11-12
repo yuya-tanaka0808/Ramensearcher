@@ -1,13 +1,14 @@
+<div class="container">
 <%= form_with(model: @review, local: true) do |form| %>
   <h5><%= t('activerecord.attributes.review.form') %></h5>
   <h5>評価の点数はは0.1〜5まで入力可能です。</h5>
   <div class="field">
     <%= form.label :rating %>
-    <%= form.text_field :rating %>
+    <%= form.text_field :rating,class: "form-control",placeholder: "評価0.1~5.0で評価" %>
   </div>
-  <div class="field">
+  <div class="field　form-group">
     <%= form.label :comment%>
-    <%= form.text_area :comment %>
+    <%= form.text_area :comment ,class: "form-control",placeholder: "コメントを入力"%>
   </div>
 
   <div class="field">
@@ -17,10 +18,12 @@
   <div class="field">
     <%= form.hidden_field :user_id, value: current_user.id %>
   </div>
-
-  <div class="inline_block">
-    <%= form.file_field :image %>
+    <br>
+  <div class="inline_block form-group">
+    <%= form.file_field :image, class: "form-control-file" %>
+    <small>最大10MB</small>
   </div>
   <br>
   <%= form.submit 'submit' %>
 <% end %>
+</div>
