@@ -1,14 +1,16 @@
 <div class="container">
 <%= form_with(model: @review, local: true) do |form| %>
   <h5><%= t('activerecord.attributes.review.form') %></h5>
+    <%= form.label :title %>
+    <%= form.text_field :title, class: "form-control",placeholder: "タイトルを入力"%>
   <h5>評価の点数はは0.1〜5まで入力可能です。</h5>
   <div class="field">
     <%= form.label :rating %>
-    <%= form.text_field :rating,class: "form-control",placeholder: "評価0.1~5.0で評価" %>
+    <%= form.text_field :rating, class: "form-control",placeholder: "評価0.1~5.0で評価" %>
   </div>
   <div class="field　form-group">
     <%= form.label :comment%>
-    <%= form.text_area :comment ,class: "form-control",placeholder: "コメントを入力"%>
+    <%= form.text_area :comment, class: "form-control",placeholder: "コメントを入力"%>
   </div>
 
   <div class="field">
