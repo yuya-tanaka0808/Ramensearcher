@@ -1,20 +1,30 @@
-<div class>
-<h2><%= t('activerecord.attributes.review.index') %></h2>
-<% if @reviews.present? %>
-<% reviews.each do |review| %>
-  <h3>
-    ☆<%= review.rating %>    <%= review.user.name %><%= t('view.models.review.word_of_mouth') %>
-      <% if user_signed_in? && current_user.id == review.user.id %>
-        <br>
-        <%= link_to t('helpers.select.edit'), edit_review_path(review),class: "btn btn-info btn-xs" %>
-        <%= link_to t('helpers.select.destroy'), review, method: :delete, data: {confirm: 'deleted？'},class: "btn btn-danger btn-xs" %>
+<div class="container">
+<h2 class="center"><%= t('activerecord.attributes.review.index') %></h2>
+  <% if @reviews.present? %>
+    <div class="card-columns">
+      <% reviews.each do |review| %>
+
+          <div class="card">
+            <div class="card-body">
+              <h4 class="card-title">
+                ☆<%= review.rating %> <%= review.user.name %><%= t('view.models.review.word_of_mouth') %> /<%= review.created_at.strftime('%Y年%m月') %>頃
+              </h4>
+              <h4 class="card-title">
+                <%= review.title %>
+              </h4>
+              <p class="card-text"> <%= safe_join(review.comment.split("\n"),tag(:br)) %></p>
+              <% if review.image.present? %>
+                <%= image_tag review.image.url,class:"card-img-bottom" %>
+              <% end %>
+              <% if user_signed_in? && current_user.id == review.user.id %>
+                <br>
+                <%= link_to t('helpers.select.edit'), edit_review_path(review) %> /
+                <%= link_to t('helpers.select.destroy'), review, method: :delete, data: {confirm: 'deleted？'} %>
+              <% end %>
+            </div>
+          </div>
+
       <% end %>
-  </h3>
-  <%= safe_join(review.comment.split("\n"),tag(:br)) %>
-  <br>
-  <% if review.image.present? %>
-    <%= image_tag review.image.url%>
+    </div>
   <% end %>
-<% end %>
 </div>
-<% end %>
