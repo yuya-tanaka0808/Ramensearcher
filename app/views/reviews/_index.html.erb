@@ -7,10 +7,11 @@
           <div class="card">
             <div class="card-body">
               <h4 class="card-title">
-                ☆<%= review.rating %> <%= review.user.name %><%= t('view.models.review.word_of_mouth') %> /<%= review.created_at.strftime('%Y年%m月') %>頃
+                <%= review.user.name %><%= t('view.models.review.word_of_mouth') %> /<%= review.created_at.strftime('%Y年%m月') %>頃
               </h4>
               <h4 class="card-title">
                 <%= review.title %>
+                <div class="review-rating" data-score="<%= review.rating %>"></div>
               </h4>
               <p class="card-text"> <%= safe_join(review.comment.split("\n"),tag(:br)) %></p>
               <% if review.image.present? %>

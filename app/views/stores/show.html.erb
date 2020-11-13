@@ -115,4 +115,12 @@
 <% end %>
 <br>
 <%= link_to t('helpers.select.back'), stores_path %>
-
+<script>
+    $('.review-rating').raty({
+        readOnly: true,
+        score: function() {
+            return $(this).attr('data-score');
+        },
+        path: '/assets/'
+    });
+</script>
