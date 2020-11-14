@@ -110,9 +110,9 @@
 <% end %>
 </div>
 <%= render partial: 'reviews/index', locals: { reviews: @reviews, store: @store } %>
-<% if user_signed_in? && current_user.reviews.find_by(store_id: @store.id).nil? %>
+<%# if user_signed_in? && current_user.reviews.find_by(store_id: @store.id).nil? %>
   <%= render partial: 'reviews/form', locals: { review: @review, store: @store } %>
-<% end %>
+<%# end %>
 <br>
 <%= link_to t('helpers.select.back'), stores_path %>
 <script>
