@@ -36,6 +36,7 @@ ja:
       review:
         index: レビュー一覧
         form: レビューする
+        title: タイトル
         rating: 評価
         comment: コメント
         image: 画像

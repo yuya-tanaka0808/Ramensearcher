@@ -1,29 +1,40 @@
 <div class="container">
-<%= form_with(model: @review, local: true) do |form| %>
-  <h5><%= t('activerecord.attributes.review.form') %></h5>
-  <h5>評価の点数はは0.1〜5まで入力可能です。</h5>
-  <div class="field">
-    <%= form.label :rating %>
-    <%= form.text_field :rating,class: "form-control",placeholder: "評価0.1~5.0で評価" %>
-  </div>
-  <div class="field　form-group">
-    <%= form.label :comment%>
-    <%= form.text_area :comment ,class: "form-control",placeholder: "コメントを入力"%>
-  </div>
+  <%= form_with(model: @review, local: true) do |form| %>
+  <h5>
+    <%= t('activerecord.attributes.review.form') %>
+  </h5>
+    <%= form.label :title %>
+    <%= form.text_field :title, class: "form-control",placeholder: "タイトルを入力"%>
+  　　
+  　　  <div id="rating-form">
+         <label>評価</label>
+         <br>
+       </div>
+       <script>
+           $('#rating-form').raty({
+               path: '/assets/',
+               scoreName: 'review[rating]'
+           });
+       </script>
 
-  <div class="field">
-    <%= form.hidden_field :store_id, value: @store.id %>
-  </div>
-
-  <div class="field">
-    <%= form.hidden_field :user_id, value: current_user.id %>
-  </div>
-    <br>
-  <div class="inline_block form-group">
-    <%= form.file_field :image, class: "form-control-file" %>
-    <small>最大10MB</small>
-  </div>
-  <br>
-  <%= form.submit 'submit' %>
-<% end %>
+     <div class="form-group">
+       <%= form.label :comment%>
+       <%= form.text_area :comment, class: "form-control",placeholder: "コメントを入力"%>
+     </div>
+     <div class="field">
+       <%= form.hidden_field :store_id, value: @store.id %>
+     </div>
+     <div class="field">
+       <%= form.hidden_field :user_id, value: current_user.id %>
+     </div>
+     <br>
+     <div class="inline_block form-group">
+       <%= form.file_field :image, class: "form-control-file" %>
+       <small>最大10MB</small>
+     </div>
+     <br>
+     <div class="center">
+       <%= form.submit 'submit' %>
+      </div>
+  <% end %>
 </div>
