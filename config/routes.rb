@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
+  # root to: 'oauth_test#index'
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   devise_for :users, controllers: {
-    registrations: 'users/registrations'
+    registrations: 'users/registrations',
+    omniauth_callbacks: "users/omniauth_callbacks"
   }
   resources :users, only: [:show]
   resources :favorites, only: [:create, :destroy]
